@@ -1,0 +1,644 @@
+<html>
+<head>
+    <title>Web VR Covide-19 Environment</title>
+    <!-- <script src="libs/aframe.min.js"></script>
+    <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v1.14.0/dist/aframe-extras.min.js"></script>
+    <script src="https://dist.3d.io/3dio-js/1.1.x/3dio.min.js"></script>
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://rawgit.com/feiss/aframe-environment-component/master/dist/aframe-environment-component.min.js"></script>
+     -->
+
+    <script src="js/aframe.js"></script>
+    <script src="js/aframe-extras.js"></script>
+    <script src="js/envcomponent.js"></script>
+    <script type="text/javascript">
+        var covid = false;
+
+        function change() {
+            console.log("Changing");
+            document.getElementById('scene1').setAttribute('visible', covid)
+            document.getElementById('scene2').setAttribute('visible', !covid)
+            covid = !covid;
+            if (covid) {
+                var text = document.querySelector("#covid");
+                text.innerHtml = 'Turn Off C-19 Mode';
+            } else {
+                text.innerHTML = 'Turn On C-19 Mode';
+            }
+        }
+
+        /*   document.getElementById("rob").addEventListener("click", function() {
+               console.log("hit");
+               //document.getElementById("rob").setAttribute("animation-mixer","clip: wiping")
+           });*/
+
+        AFRAME.registerComponent('raycaster-autorefresh', {
+            init: function () {
+                var el = this.el;
+
+                this.el.addEventListener('model-loaded', function () {
+
+                    var cursorEl = el.querySelector('[raycaster]');
+                    cursorEl.components.raycaster.refreshObjects();
+                });
+            }
+        });
+        AFRAME.registerComponent('table', {
+            init: function () {
+                console.log("registered the table");
+                this.el.addEventListener('click', function (evt) {
+                    var a = document.getElementById("try");
+                    var mode = document.getElementById("scene1").getAttribute("visible");
+                    console.log("nimating");
+                    if(!mode){
+                        document.getElementById("robot").setAttribute("visible","true");
+                        a.emit("startAnimation");
+                        a.addEventListener('animationend', function () {
+                            document.getElementById("robot").setAttribute("animation-mixer", "clip: wiping");
+                        });
+                        setTimeout(function(){      document.getElementById("robot").setAttribute("visible","false");  document.getElementById("robot").setAttribute("animation-mixer", "clip: ArmatureAction"); }, 20000);
+                    }
+                    else{
+
+                    }
+
+                });
+            }
+        });
+
+        var dim = false;
+
+        function dimmerClick() {
+            var light = document.querySelector("#insideLight");
+            var text = document.querySelector("#dimmerText");
+
+            if (!dim) {
+                text.setAttribute("value", "Turn on Light");
+                light.setAttribute('light', 'color', '#1c0f62');
+
+                dim = true;
+            } else {
+                text.setAttribute("value", "Turn off Lights");
+                light.setAttribute('light', 'color', '#BBB');
+
+                dim = false;
+            }
+        }
+    </script>
+    <style>
+        /* This changes the title of the loading screen */
+        .a-loader-title {
+            color: red;
+        }
+    </style>
+
+</head>
+<body>
+<button id="covid" onClick="change()">Covid ON/OFF</button>
+<!-- 70 1 6 -->
+<a-scene raycaster-autorefresh light="defaultLightsEnabled: true" id="scene"
+         loading-screen="dotsColor: red; backgroundColor: black" shadows="false" class="fullscreen" inspector=""
+         renderer="colorManagement: true">
+    <a-entity position="70 1 6" rotation="0 90 0">
+        <!-- <a-camera universal-controls  wasd-controls="acceleration: 300"  look-controls="pointerLockEnabled: true;">
+            &lt;!&ndash; <a-entity  cursor="fuse: true; maxDistance: 150; timeout: 250" position="0 0 -5" geometry="primitive: ring" material="color: white; shader: flat" rotation="" scale="0.1 0.1 0.1" visible="">
+             </a-entity>&ndash;&gt;
+             <a-cursor></a-cursor>
+             <a-text id="covid" value="Turn on Covid Mode" align="center" color="#000" position="-8.202 4.149 -6.732" scale="1.027 0.4 0.4" rotation="18.105466326134014 41.424848587958515 11.115381225537972"></a-text>
+             <a-box id="boxId" position="-8.32 4.068 -6.774" rotation="-4.469070802020421 43.88856710702106 12.37588837482578" color="#d3d3d3 " scale="1.027 0.4 0.4"></a-box>
+
+         </a-camera>-->
+        <a-camera universal-controls wasd-controls="acceleration: 300" look-controls="pointerLockEnabled: true;">
+
+            <a-cursor raycaster="" cursor=""></a-cursor>
+
+        </a-camera>
+    </a-entity>
+    <a-sky color="#ECECEC"></a-sky>
+    <a-entity id="insideLight" light="color:#BBB;type:ambient" intensity="0.6"></a-entity>
+
+    <a-entity id="scene1" visible="true">
+        <!--Left wall -->
+        <a-entity geometry="primitive: box; depth: 0.6; height: 1; width: 100" position="30 14 25" rotation="0 0 0"
+                  material="shader: standard;
+            roughness: 1; src: url(images/beam1.jpg); repeat: 32 1" scale="" visible=""></a-entity>
+        <a-entity static-body="" geometry="primitive: box; depth: 1; height: 14; width: 100" position="30 6.5 25.5"
+                  rotation="0 0 0" material="shader: standard;
+            roughness: 1; src: url(images/wall1.jpg); repeat: 12 2" scale="" visible=""></a-entity>
+
+        <!--Right wall -->
+        <a-entity geometry="primitive: box; depth: 0.6; height: 1; width: 102" position="29 14 -45" rotation="0 0 0"
+                  material="shader: standard; roughness: 1; src: url(images/beam1.jpg); repeat: 32 1" scale=""
+                  visible=""></a-entity>
+        <a-entity static-body="" geometry="primitive: box; depth: 1; height: 14; width: 100" position="30 6.5 -45"
+                  rotation="0 0 0" material="shader: standard;roughness: 1; src: url(images/wall3.jpg); repeat: 12 2"
+                  scale="" visible=""></a-entity>
+
+        <!--Back wall -->
+        <a-entity geometry="primitive: box; depth: 0.6; height: 1; width: 70" position="-19 13.8 -10" rotation="0 90 0"
+                  material="shader: standard;
+            roughness: 1; src: url(images/beam1.jpg); repeat: 9 1" scale="" visible=""></a-entity>
+        <a-entity static-body="" geometry="primitive: box; depth: 1; height: 14; width: 70" position="-20 6.5 -10"
+                  rotation="0 90 0" material="shader: standard;
+            roughness: 1; src: url(images/wall1.jpg); repeat: 4 2" scale="" visible=""></a-entity>
+
+        <!-- Front wall -->
+        <a-entity shadow="cast:true;receive:true;" geometry="primitive: box; depth: 0.6; height: 1; width: 70"
+                  position="80 14 -10" rotation="0 90 0" material="shader: standard;
+            roughness: 1; src: url(images/beam1.jpg); repeat: 9 1"></a-entity>
+        <a-entity static-body geometry="primitive: box; depth: 1; height: 14; width: 70" position="80.5 6.5 -10"
+                  rotation="0 90 0" material="shader: standard;
+            roughness: 1; src: url(images/wall1.jpg); repeat: 4 2"></a-entity>
+
+        <!-- Ceiling -->
+        <a-entity static-body="" geometry="primitive: box; depth: 70; height: 0.09; width: 100" position="30 14.5 -10"
+                  material="shader: standard; side: double; opacity: 1; src: url(images/ceiling.jpg); repeat: 20 12"
+                  rotation="" scale="" visible=""></a-entity>
+
+        <!-- Floor -->
+        <a-entity shadow="cast:true;receive:true;" static-body=""
+                  geometry="primitive: box; depth: 70; height: 0.1; width: 100" position="30 -0.5 -10"
+                  material="shader: standard; side: double; opacity: 1; src: url(images/woodenfloor.jpg); repeat: 12 5"
+                  shadow="cast:true;receive:true;" rotation="" scale="" visible=""></a-entity>
+
+        <!-- Mid-wall -->
+        <!-- Left side  -->
+        <a-entity geometry="primitive: box; depth: 0.2; height: 1; width: 15.2" position="55.6 14 18" rotation="0 90 0"
+                  material="shader: standard; roughness: 1; src: url(images/beam1.jpg); repeat: 9 1" scale=""
+                  visible=""></a-entity>
+        <a-entity id="cubeshelf" static-body="" geometry="primitive: box; depth: 1; height: 14.9; width: 15"
+                  position="55 7 18" rotation="0 90 0"
+                  material="shader: standard;roughness: 1; src: url(images/wall2.jpg); repeat: " scale=""
+                  visible=""></a-entity>
+
+        <!-- Right side  -->
+        <a-entity geometry="primitive: box; depth: 0.2; height: 1; width: 43" position="55.6 14 -23" rotation="0 90 0"
+                  material="shader: standard; roughness: 1; src: url(images/beam1.jpg); repeat: 9 1" scale=""
+                  visible=""></a-entity>
+        <a-entity id="cubeshelf" static-body="" geometry="primitive: box; depth: 1; height: 14.9; width: 43"
+                  position="55 7 -23" rotation="0 90 0"
+                  material="shader: standard;roughness: 1; src: url(images/wall2.jpg); repeat: " scale=""
+                  visible=""></a-entity>
+
+
+        <!-- Door side images  -->
+        <a-entity geometry="primitive: box; depth: 0.02; height: 7; width: 5" position="62.5 6 24.8" rotation="0 -180 0"
+                  material="shader: standard; roughness: 1; src: url(images/Painting.jpg); repeat: " scale=""
+                  visible=""></a-entity>
+        <a-entity geometry="primitive: box; depth: 0.1; height: 9; width: 7" position="62.5 6 24.9" rotation="0 -180 0"
+                  material="shader: standard; roughness: 1; src: url(images/Painting_bg.jpg); repeat: " scale=""
+                  visible=""></a-entity>
+
+        <!-- Ceiling Fan  -->
+        <!-- <a-obj-model rotation="0 0 0" material="" scale="0.04 0.04 0.04" position="60 10 5" src="assets/Fan/fan.obj" mtl="assets/Fan/fan.mtl"> -->
+        <!-- <a-animation begin = "click" attribute = "rotation" from = "0 0 0" to = "360 0 0" dur = "3000"></a-animation>
+        </a-obj-model>-->
+
+
+        <!-- Ceiling Lights  -->
+        <!-- <a-obj-model material="" scale="0.6 0.6 0.6" rotation="0 0 0" position="60 10 10" src="assets/Lights/track-lights.obj" mtl="assets/Lights/track-lights.mtl"></a-obj-model>
+        <a-obj-model material="" scale="0.6 0.6 0.6" rotation="0 0 0" position="60 10 0" src="assets/Lights/track-lights.obj" mtl="assets/Lights/track-lights.mtl"></a-obj-model>
+        <a-obj-model material="" scale="0.6 0.6 0.6" rotation="90 0 0" position="25 10 20" src="assets/Lights/track-lights.obj" mtl="assets/Lights/track-lights.mtl"></a-obj-model> -->
+
+
+        <!--Door -->
+        <a-entity door-toggle class="intersectable">
+            <a-obj-model src="assets/Door/Door.obj" visible="true" mtl="assets/Door/Door.mtl" position="74 -1 25"
+                         rotation="0 -180 0" scale="0.9 0.9 0.1" material="" obj-model=""></a-obj-model>
+        </a-entity>
+        <!-- Desktop  -->
+        <a-gltf-model table src="assets/Desktop/Desktop.glb" position="40 -0.445 -5" scale="0.465 0.482 0.514" cross=""
+                      origin="anonymous" gltf-model="assets/Desktop/Desktop.glb">
+        </a-gltf-model>
+        <a-gltf-model src="assets/Desktop/Desktop.glb" position="40 -0.445 -5" scale="0.465 0.482 0.514" cross=""
+                      origin="anonymous" gltf-model="assets/Desktop/Desktop.glb">
+        </a-gltf-model>
+        <a-gltf-model src="assets/Desktop/Desktop.glb" position="33.131 -0.445 -5" scale="0.465 0.482 0.514"
+                      cross="" origin="anonymous" gltf-model="assets/Desktop/Desktop.glb"></a-gltf-model>
+        <a-gltf-model src="assets/Desktop/Desktop.glb" position="40.01 -0.445 -12.72" scale="0.465 0.482 0.514"
+                      cross="" origin="anonymous" gltf-model="assets/Desktop/Desktop.glb"></a-gltf-model>
+        <a-gltf-model src="assets/Desktop/Desktop.glb" position="33.166 -0.445 -12.72" scale="0.465 0.482 0.514"
+                      cross="" origin="anonymous" gltf-model="assets/Desktop/Desktop.glb"></a-gltf-model>
+        <a-gltf-model src="assets/Desktop/Desktop.glb" position="40 -0.445 -16.55" scale="0.465 0.482 0.514"
+                      cross="" origin="anonymous" gltf-model="assets/Desktop/Desktop.glb"></a-gltf-model>
+        <a-gltf-model src="assets/Desktop/Desktop.glb" position="33.173 -0.445 -16.55" scale="0.465 0.482 0.514"
+                      cross="" origin="anonymous" gltf-model="assets/Desktop/Desktop.glb"></a-gltf-model>
+        <a-gltf-model src="assets/Desktop/Desktop.glb" position="26.593 -0.445 -16.55" scale="0.465 0.482 0.514"
+                      cross="" origin="anonymous" gltf-model="assets/Desktop/Desktop.glb"></a-gltf-model>
+        <a-gltf-model src="assets/Desktop/Desktop.glb" position="26.593 -0.445 -12.696" scale="0.465 0.482 0.514"
+                      cross="" origin="anonymous" gltf-model="assets/Desktop/Desktop.glb"></a-gltf-model>
+        <a-gltf-model src="assets/Desktop/Desktop.glb" position="26.593 -0.445 -8.834" scale="0.465 0.482 0.514"
+                      cross="" origin="anonymous" gltf-model="assets/Desktop/Desktop.glb"></a-gltf-model>
+        <a-gltf-model src="assets/Desktop/Desktop.glb" position="26.593 -0.445 -4.981" scale="0.465 0.482 0.514"
+                      cross="" origin="anonymous" gltf-model="assets/Desktop/Desktop.glb"></a-gltf-model>
+        <a-gltf-model src="assets/Desktop/Desktop.glb" position="33.163 -0.431 -8.856" scale="0.465 0.482 0.514"
+                      cross="" origin="anonymous" gltf-model="assets/Desktop/Desktop.glb"></a-gltf-model>
+        <a-gltf-model src="assets/Desktop/Desktop.glb" position="40.068 -0.431 -8.856" scale="0.465 0.482 0.514"
+                      cross="" origin="anonymous" gltf-model="assets/Desktop/Desktop.glb"></a-gltf-model>
+        <!-- Door Carpet  -->
+        <a-entity static-body="" geometry="primitive: box; depth: 3; height: 0.2; width: 7" position="74.2 -0.5 22.5"
+                  rotation=" 0 0 0"
+                  material="shader: standard; roughness: 1; src: url(images/DoorCarpet.jpg); repeat: 8 4" scale=""
+                  visible=""></a-entity>
+
+        <!--Library Bookshelf-->
+        <a-gltf-model src="assets/Bookshelf/scene.gltf" position="20 3.886 23" scale="-0.25 -0.25 0.1" rotation="180 0 0" cross="" origin="anonymous" gltf-model="assets/Bookshelf/scene.gltf"></a-gltf-model>
+        <a-gltf-model src="assets/Bookshelf/scene.gltf" position="-15 4 17" scale="-0.25 -0.25 0.1" rotation="180 270 0"
+                      cross origin="anonymous"></a-gltf-model>
+        <a-gltf-model src="assets/Bookshelf/scene.gltf" position="-15 4 7" scale="-0.25 -0.25 0.1" rotation="180 270 0"
+                      cross origin="anonymous"></a-gltf-model>
+        <a-gltf-model src="assets/Bookshelf/scene.gltf" position="-15 4 -3" scale="-0.25 -0.25 0.1" rotation="180 270 0"
+                      cross origin="anonymous"></a-gltf-model>
+        <a-gltf-model src="assets/Bookshelf/scene.gltf" position="-15 4 -13" scale="-0.25 -0.25 0.1"
+                      rotation="180 270 0" cross origin="anonymous"></a-gltf-model>
+        <a-gltf-model src="assets/Bookshelf/scene.gltf" position="-15 4 -23" scale="-0.25 -0.25 0.1"
+                      rotation="180 270 0" cross origin="anonymous"></a-gltf-model>
+        <a-gltf-model src="assets/Bookshelf/scene.gltf" position="-15 4 -33" scale="-0.25 -0.25 0.1"
+                      rotation="180 270 0" cross origin="anonymous"></a-gltf-model>
+        <a-gltf-model src="assets/Bookshelf/scene.gltf" position="-5 3.5 -40" scale="-0.25 -0.25 0.1" rotation="0 0 180"
+                      cross origin="anonymous"></a-gltf-model>
+        <a-gltf-model src="assets/Bookshelf/scene.gltf" position="5 3.5 -40" scale="-0.25 -0.25 0.1" rotation="0 0 180"
+                      cross origin="anonymous"></a-gltf-model>
+        <a-gltf-model src="assets/Bookshelf/scene.gltf" position="15 3.5 -40" scale="-0.25 -0.25 0.1" rotation="0 0 180"
+                      cross origin="anonymous"></a-gltf-model>
+        <a-gltf-model src="assets/Bookshelf/scene.gltf" position="25 3.5 -40" scale="-0.25 -0.25 0.1" rotation="0 0 180"
+                      cross origin="anonymous"></a-gltf-model>
+
+
+        <!--hand sanitizers-->
+
+        <!--the food court-->
+       <!-- <a-entity fbx-model="src: assets/FoodCounter/cafe.glb" material="color: red" crossorigin="anonymous">-->
+            <!--<a-obj-model id="plant-1" material="" scale="0.05 0.05 0.05" position="77.5 0 15"
+                         src="assets/FoodCounter/3d-model.obj" mtl="assets/FoodCounter/untitled.mtl" ></a-obj-model>-->
+
+        <!-- &lt;!&ndash;Gas Cabinets&ndash;&gt;
+         &lt;!&ndash; Left  &ndash;&gt;
+         <a-entity static-body = "" geometry = "primitive: box; depth: 6; height: 5.8; width: 3" position = "58.5 0 -42" rotation = "0 90 0" material = "shader: standard; roughness: 1; src: url(images/cabinet.jpg); repeat: 2" scale = "" visible = ""></a-entity>
+         <a-entity static-body = "" geometry = "primitive: box; depth: 6; height: 0.5; width: 3" position = "58.5 3 -42" rotation = " 0 90 0" material = "shader: standard; roughness: 1; src: url(images/granite.jpg); repeat: 2" scale = "" visible = ""></a-entity>
+         &lt;!&ndash; Right  &ndash;&gt;
+         <a-entity static-body = "" geometry = "primitive: box; depth: 6; height: 5.8; width: 3" position = "70 0 -42" rotation = "0 90 0" material = "shader: standard; roughness: 1; src: url(images/cabinet.jpg); repeat: 2" scale = "" visible = ""></a-entity>
+         <a-entity static-body = "" geometry = "primitive: box; depth: 6; height: 0.5; width: 3" position = "70 3 -42" rotation = " 0 90 0" material = "shader: standard; roughness: 1; src: url(images/granite.jpg); repeat: 2" scale = "" visible = ""></a-entity>
+-->
+        <!--Stove-->
+        <!-- <a-entity static-body = "" geometry = "primitive: box; depth: 50; height: 50; width: 50" position = "65 1.9 -6" rotation = "180 0 0" material = "shader: standard; roughness: 1; src: url(images/stove.jpg); repeat: " scale = "-0.03 -0.07 -0.1" visible = ""></a-entity> -->
+
+        <!-- Sofa  -->
+        <a-gltf-model src="assets/Sofa/scene.gltf" position="43.726 -0.5 18" scale="-5.035 -4.973 3.719"
+                      rotation="180 0 0" cross="" origin="anonymous" gltf-model="assets/Sofa/scene.gltf"></a-gltf-model>
+
+        <!-- Plants -->
+        <a-obj-model id="plant-1" material="" scale="0.05 0.05 0.05" position="77.5 0 15"
+                     src="assets/Plant/spatifilum.obj" mtl="assets/Plant/spatifilum.mtl"></a-obj-model>
+        <a-obj-model id="plant-1" material="" scale="0.06 0.06 0.06" position="68 -0.5 22.5"
+                     src="assets/Plant/spatifilum.obj" mtl="assets/Plant/spatifilum.mtl"></a-obj-model>
+        <a-obj-model id="plant-1" material="" scale="0.06 0.06 0.06" position="53 -0.5 18"
+                     src="assets/Plant/spatifilum.obj" mtl="assets/Plant/spatifilum.mtl"></a-obj-model>
+        <a-obj-model id="plant-1" material="" scale="0.06 0.06 0.06" position="35 -0.5 18"
+                     src="assets/Plant/spatifilum.obj" mtl="assets/Plant/spatifilum.mtl"></a-obj-model>
+
+        <!-- Canteen Table and chairs  -->
+        <a-obj-model id="table-1" material="" scale="0.05 0.05 0.05" position="72 0 -25"
+                     src="assets/TableChairs/TableAndChairs.obj"
+                     mtl="assets/TableChairs/TableAndChairs.mtl"></a-obj-model>
+        <a-obj-model id="table-1" material="" scale="0.05 0.05 0.05" position="65 0 -15"
+                     src="assets/TableChairs/TableAndChairs.obj"
+                     mtl="assets/TableChairs/TableAndChairs.mtl"></a-obj-model>
+        <a-obj-model id="table-1" material="" scale="0.05 0.05 0.05" position="75 0 -5"
+                     src="assets/TableChairs/TableAndChairs.obj"
+                     mtl="assets/TableChairs/TableAndChairs.mtl"></a-obj-model>
+
+        <!--the cleaning robot-->
+
+        <!--   <a-gltf-model src="assets/robots/robot.glb" position="55.931 2.221 12.312"
+                         scale="4 4 4" rotation="0 270 180" cross="" origin="anonymous"
+                         gltf-model="assets/robots/robot.glb"animation-mixer="clip: ArmatureAction"
+                         playbackSpeed="0.4" addLights="true"
+           ></a-gltf-model>-->
+     <!--   <a-entity>
+
+            <a-gltf-model rob animation-mixer="clip: ArmatureAction" event-set__click="visible:false" id="rob"
+                          src="assets/robots/robot.glb" position="50.329 -0.19 -35.589" scale="4.541 6.779 4.924"
+                          rotation="-87.605 94.481 -179.45" cross="" origin="anonymous"
+                          gltf-model="assets/robots/robot.glb">
+                <a-animation id="try" begin="startAnimation" attribute="position" to="38.631 -0.445 -5.654"
+                             dur="10000"></a-animation>
+            </a-gltf-model>
+        </a-entity>-->
+        <!-- Light Dimmer -->
+        <a-entity onclick="dimmerClick()">
+            <a-text id="dimmerText" value="Dim Lights" align="center" color="#000" position="55.931 3.471 15.058"
+                    scale="1.5 1.5 1.5" rotation="0 93.965078401455 0"></a-text>
+            <a-box position="55.543 2.221 15.262" width="0.5" height="0.75" depth="0.1" color="black"
+                   rotation="0 93.965078401455 0"></a-box>
+            <a-cylinder position="55.608 2.261 15.269" rotation="90.01166961505233 95.34017710976899 0" radius="0.15"
+                        height="0.1" color="grey"></a-cylinder>
+        </a-entity>
+
+
+        <!--Globe-->
+<!--        <a-sphere event-set__mouseenter="material.color: blue" class="intersectable" position="72 3 -25" radius="0.7"
+                  rotation="0 0 0" src="images/globe.jpg">
+            <a-animation begin="click" attribute="rotation" from="0 0 0" to="0 360 0" dur="3000"></a-animation>
+        </a-sphere>-->
+
+        <!-- Radio -->
+        <!-- https://free3d.com/ -->
+        <!-- <a-entity id="radio" collada-model="url(assets/radio/Radio_BI_dae.dae)" rotation="0 90 0" position="45 5 -5.5" visible="" scale="0.2 0.2 0.2">
+        </a-entity> -->
+
+        <!--Text-->
+        <!-- <a-text value = "Click the globe" color = "red" rotation = "0 0 0" position = "67.5 4 -7" scale = "2 2 2"></a-text> -->
+    </a-entity><!--
+        *****************************************************************************************************
+        *****************************************************************************************************
+        *****************************************************************************************************
+        *****************************************************************************************************
+        *****************************************************************************************************
+        *****************************************************************************************************
+        *****************************************************************************************************
+        *****************************************************************************************************-->
+    <a-entity id="scene2" visible="false">
+        <!--Left wall -->
+        <a-entity geometry="primitive: box; depth: 0.6; height: 1; width: 100" position="30 14 25" rotation="0 0 0"
+                  material="shader: standard;
+            roughness: 1; src: url(images/beam1.jpg); repeat: 32 1" scale="" visible=""></a-entity>
+        <a-entity static-body="" geometry="primitive: box; depth: 1; height: 14; width: 100" position="30 6.5 25.5"
+                  rotation="0 0 0" material="shader: standard;
+            roughness: 1; src: url(images/wall1.jpg); repeat: 12 2" scale="" visible=""></a-entity>
+
+        <!--Right wall -->
+        <a-entity geometry="primitive: box; depth: 0.6; height: 1; width: 102" position="29 14 -45" rotation="0 0 0"
+                  material="shader: standard; roughness: 1; src: url(images/beam1.jpg); repeat: 32 1" scale=""
+                  visible=""></a-entity>
+        <a-entity static-body="" geometry="primitive: box; depth: 1; height: 14; width: 100" position="30 6.5 -45"
+                  rotation="0 0 0" material="shader: standard;roughness: 1; src: url(images/wall3.jpg); repeat: 12 2"
+                  scale="" visible=""></a-entity>
+
+        <!--Back wall -->
+        <a-entity geometry="primitive: box; depth: 0.6; height: 1; width: 70" position="-19 13.8 -10" rotation="0 90 0"
+                  material="shader: standard;
+            roughness: 1; src: url(images/beam1.jpg); repeat: 9 1" scale="" visible=""></a-entity>
+        <a-entity static-body="" geometry="primitive: box; depth: 1; height: 14; width: 70" position="-20 6.5 -10"
+                  rotation="0 90 0" material="shader: standard;
+            roughness: 1; src: url(images/wall1.jpg); repeat: 4 2" scale="" visible=""></a-entity>
+
+        <!-- Front wall -->
+        <a-entity shadow="cast:true;receive:true;" geometry="primitive: box; depth: 0.6; height: 1; width: 70"
+                  position="80 14 -10" rotation="0 90 0" material="shader: standard;
+            roughness: 1; src: url(images/beam1.jpg); repeat: 9 1"></a-entity>
+        <a-entity static-body geometry="primitive: box; depth: 1; height: 14; width: 70" position="80.5 6.5 -10"
+                  rotation="0 90 0" material="shader: standard;
+            roughness: 1; src: url(images/wall1.jpg); repeat: 4 2"></a-entity>
+
+        <!-- Ceiling -->
+        <a-entity static-body="" geometry="primitive: box; depth: 70; height: 0.09; width: 100" position="30 14.5 -10"
+                  material="shader: standard; side: double; opacity: 1; src: url(images/ceiling.jpg); repeat: 20 12"
+                  rotation="" scale="" visible=""></a-entity>
+
+        <!-- Floor -->
+        <a-entity shadow="cast:true;receive:true;" static-body=""
+                  geometry="primitive: box; depth: 70; height: 0.1; width: 100" position="30 -0.5 -10"
+                  material="shader: flat; side: double; opacity: 1; src: url(images/woodenfloor.jpg); repeat: 12 5"
+                  shadow="cast:true;receive:true;" rotation="" scale="" visible=""></a-entity>
+
+        <!-- Mid-wall -->
+        <!-- Left side  -->
+        <a-entity geometry="primitive: box; depth: 0.2; height: 1; width: 15.2" position="55.6 14 18" rotation="0 90 0"
+                  material="shader: standard; roughness: 1; src: url(images/beam1.jpg); repeat: 9 1" scale=""
+                  visible=""></a-entity>
+        <a-entity id="cubeshelf" static-body="" geometry="primitive: box; depth: 1; height: 14.9; width: 15"
+                  position="55 7 18" rotation="0 90 0"
+                  material="shader: standard;roughness: 1; src: url(images/wall2.jpg); repeat: " scale=""
+                  visible=""></a-entity>
+
+        <!-- Right side  -->
+        <a-entity geometry="primitive: box; depth: 0.2; height: 1; width: 43" position="55.6 14 -23" rotation="0 90 0"
+                  material="shader: standard; roughness: 1; src: url(images/beam1.jpg); repeat: 9 1" scale=""
+                  visible=""></a-entity>
+        <a-entity id="cubeshelf" static-body="" geometry="primitive: box; depth: 1; height: 14.9; width: 43"
+                  position="55 7 -23" rotation="0 90 0"
+                  material="shader: standard;roughness: 1; src: url(images/wall2.jpg); repeat: " scale=""
+                  visible=""></a-entity>
+
+        <!-- Mid wall images -->
+        <a-entity geometry="primitive: box; depth: 0.02; height: 5; width: 7" position="55.6 7 -7" rotation="0 90 0"
+                  material="shader: standard; roughness: 1; src: url(images/Covid2.jpg); repeat: " scale=""
+                  visible=""></a-entity>
+        <a-entity geometry="primitive: box; depth: 0.02; height: 5; width: 3" position="55.6 7 22" rotation="0 90 0"
+                  material="shader: standard; roughness: 1; src: url(images/Covid5.jpg); repeat: " scale=""
+                  visible=""></a-entity>
+        <a-entity geometry="primitive: box; depth: 0.02; height: 5; width: 3" position="55.6 7 18" rotation="0 90 0"
+                  material="shader: standard; roughness: 1; src: url(images/Covid6.jpg); repeat: " scale=""
+                  visible=""></a-entity>
+        <a-entity geometry="primitive: box; depth: 0.02; height: 5; width: 3" position="55.6 7 14" rotation="0 90 0"
+                  material="shader: standard; roughness: 1; src: url(images/Covid7.jpg); repeat: " scale=""
+                  visible=""></a-entity>
+        <a-entity geometry="primitive: box; depth: 0.02; height: 7; width: 5" position="55.6 7 -17" rotation="0 90 0"
+                  material="shader: standard; roughness: 1; src: url(images/Covid4.jpg); repeat: " scale=""
+                  visible=""></a-entity>
+
+        <!-- Door side images  -->
+        <a-entity geometry="primitive: box; depth: 0.02; height: 7; width: 5" position="62.5 6 24.8" rotation="0 -180 0"
+                  material="shader: standard; roughness: 1; src: url(images/Painting.jpg); repeat: " scale=""
+                  visible=""></a-entity>
+        <a-entity geometry="primitive: box; depth: 0.1; height: 9; width: 7" position="62.5 6 24.9" rotation="0 -180 0"
+                  material="shader: standard; roughness: 1; src: url(images/Painting_bg.jpg); repeat: " scale=""
+                  visible=""></a-entity>
+
+        <!-- Front wall images  -->
+        <a-entity geometry="primitive: box; depth: 0.02; height: 7; width: 5" position="80 6.5 10" rotation="0 90 0"
+                  material="shader: standard; roughness: 1; src: url(images/Covid3.jpg); repeat: " scale=""
+                  visible=""></a-entity>
+
+
+        <!--Door -->
+        <a-obj-model src="assets/Door/Door.obj" visible="true" mtl="assets/Door/Door.mtl" position="74 -1 25"
+                     rotation="0 -180 0" scale="0.9 0.9 0.1" material="" obj-model=""></a-obj-model>
+        <a-obj-model src="assets/Door/Door.obj" mtl="assets/Door/Door.mtl" position="50.834 -1 -44.34"
+                     rotation="0 -180 0" scale="0.9 0.9 0.1" material=""></a-obj-model>
+        <!-- Desktop  -->
+
+        <a-text id="pc" value="Click Here to clean this desk" align="center" color="#000" position="36.629 2.843 -5" scale="1.027 1 1" rotation="0 90 0" text="color:#FFFFF"></a-text>
+        <a-gltf-model table src="assets/Desktop/Desktop.glb" position="40 -0.445 -5" scale="0.465 0.482 0.514" cross=""
+                      origin="anonymous" gltf-model="assets/Desktop/Desktop.glb">
+
+        </a-gltf-model>
+        <a-gltf-model src="assets/Desktop/table.glb" position="40 -0.445 -5" scale="0.465 0.482 0.514" cross=""
+                      origin="anonymous" gltf-model="assets/Desktop/table.glb">
+        </a-gltf-model>
+        <a-gltf-model src="assets/Desktop/Desktop.glb" position="33.131 -0.445 -5" scale="0.465 0.482 0.514"
+                      cross="" origin="anonymous" gltf-model="assets/Desktop/Desktop.glb"></a-gltf-model>
+        <a-gltf-model src="assets/Desktop/Desktop.glb" position="40.01 -0.445 -12.72" scale="0.465 0.482 0.514"
+                      cross="" origin="anonymous" gltf-model="assets/Desktop/Desktop.glb"></a-gltf-model>
+        <a-gltf-model src="assets/Desktop/Desktop.glb" position="33.166 -0.445 -12.72" scale="0.465 0.482 0.514"
+                      cross="" origin="anonymous" gltf-model="assets/Desktop/Desktop.glb"></a-gltf-model>
+        <a-gltf-model src="assets/Desktop/table.glb" position="40 -0.445 -16.55" scale="0.465 0.482 0.514"
+                      cross="" origin="anonymous" gltf-model="assets/Desktop/table.glb"></a-gltf-model>
+        <a-gltf-model src="assets/Desktop/table.glb" position="33.173 -0.445 -16.55" scale="0.465 0.482 0.514"
+                      cross="" origin="anonymous" gltf-model="assets/Desktop/table.glb"></a-gltf-model>
+        <a-gltf-model src="assets/Desktop/table.glb" position="26.593 -0.445 -16.55" scale="0.465 0.482 0.514"
+                      cross="" origin="anonymous" gltf-model="assets/Desktop/table.glb"></a-gltf-model>
+        <a-gltf-model src="assets/Desktop/Desktop.glb" position="26.593 -0.445 -12.696" scale="0.465 0.482 0.514"
+                      cross="" origin="anonymous" gltf-model="assets/Desktop/Desktop.glb"></a-gltf-model>
+        <a-gltf-model src="assets/Desktop/table.glb" position="26.593 -0.445 -8.834" scale="0.465 0.482 0.514"
+                      cross="" origin="anonymous" gltf-model="assets/Desktop/table.glb"></a-gltf-model>
+        <a-gltf-model src="assets/Desktop/Desktop.glb" position="26.593 -0.445 -4.981" scale="0.465 0.482 0.514"
+                      cross="" origin="anonymous" gltf-model="assets/Desktop/Desktop.glb"></a-gltf-model>
+        <a-gltf-model src="assets/Desktop/table.glb" position="33.163 -0.431 -8.856" scale="0.465 0.482 0.514"
+                      cross="" origin="anonymous" gltf-model="assets/Desktop/table.glb"></a-gltf-model>
+        <a-gltf-model src="assets/Desktop/table.glb" position="40.068 -0.431 -8.856" scale="0.465 0.482 0.514"
+                      cross="" origin="anonymous" gltf-model="assets/Desktop/table.glb"></a-gltf-model>
+        <!-- Door Carpet  -->
+        <a-entity static-body="" geometry="primitive: box; depth: 3; height: 0.2; width: 7" position="74.2 -0.5 22.5"
+                  rotation=" 0 0 0"
+                  material="shader: standard; roughness: 1; src: url(images/DoorCarpet.jpg); repeat: 8 4" scale=""
+                  visible=""></a-entity>
+
+        <!--Library Bookshelf-->
+        <a-gltf-model src="assets/Bookshelf/scene.gltf" position="20 2 23" scale="-0.25 -0.25 0.1" rotation="180 0 0"
+                      cross origin="anonymous"></a-gltf-model>
+        <a-gltf-model src="assets/Bookshelf/scene.gltf" position="-15 4 17" scale="-0.25 -0.25 0.1" rotation="180 270 0"
+                      cross origin="anonymous"></a-gltf-model>
+        <a-gltf-model src="assets/Bookshelf/scene.gltf" position="-15 4 7" scale="-0.25 -0.25 0.1" rotation="180 270 0"
+                      cross origin="anonymous"></a-gltf-model>
+        <a-gltf-model src="assets/Bookshelf/scene.gltf" position="-15 4 -3" scale="-0.25 -0.25 0.1" rotation="180 270 0"
+                      cross origin="anonymous"></a-gltf-model>
+        <a-gltf-model src="assets/Bookshelf/scene.gltf" position="-15 4 -13" scale="-0.25 -0.25 0.1"
+                      rotation="180 270 0" cross origin="anonymous"></a-gltf-model>
+        <a-gltf-model src="assets/Bookshelf/scene.gltf" position="-15 4 -23" scale="-0.25 -0.25 0.1"
+                      rotation="180 270 0" cross origin="anonymous"></a-gltf-model>
+        <a-gltf-model src="assets/Bookshelf/scene.gltf" position="-15 4 -33" scale="-0.25 -0.25 0.1"
+                      rotation="180 270 0" cross origin="anonymous"></a-gltf-model>
+        <a-gltf-model src="assets/Bookshelf/scene.gltf" position="-5 3.5 -40" scale="-0.25 -0.25 0.1" rotation="0 0 180"
+                      cross origin="anonymous"></a-gltf-model>
+        <a-gltf-model src="assets/Bookshelf/scene.gltf" position="5 3.5 -40" scale="-0.25 -0.25 0.1" rotation="0 0 180"
+                      cross origin="anonymous"></a-gltf-model>
+        <a-gltf-model src="assets/Bookshelf/scene.gltf" position="15 3.5 -40" scale="-0.25 -0.25 0.1" rotation="0 0 180"
+                      cross origin="anonymous"></a-gltf-model>
+        <a-gltf-model src="assets/Bookshelf/scene.gltf" position="25 3.5 -40" scale="-0.25 -0.25 0.1" rotation="0 0 180"
+                      cross origin="anonymous"></a-gltf-model>
+
+        <!--hand sanitizers-->
+        <a-gltf-model src="assets/Handsanitizer/handsanitizer.glb" position="25 3.229 24.656"
+                      scale="0.4 -0.49000000000000005 0.67" rotation="0 0 180" cross="" origin="anonymous"
+                      gltf-model="assets/Handsanitizer/handsanitizer.glb"></a-gltf-model>
+        <a-gltf-model src="assets/Handsanitizer/handsanitizer.glb" position="32.03 3.229 -44.147"
+                      scale="0.4 -0.49000000000000005 0.67" rotation="0 180 180" cross="" origin="anonymous"
+                      gltf-model="assets/Handsanitizer/handsanitizer.glb"></a-gltf-model>
+        <a-gltf-model src="assets/Handsanitizer/handsanitizer.glb" position="46.184 3.602 -44.147"
+                      scale="0.4 -0.49000000000000005 0.67" rotation="0 180 180" cross="" origin="anonymous"
+                      gltf-model="assets/Handsanitizer/handsanitizer.glb"></a-gltf-model>
+        <a-gltf-model src="assets/Handsanitizer/handsanitizer.glb" position="-0.914 3.229 24.656"
+                      scale="0.4 -0.49000000000000005 0.67" rotation="0 0 180" cross="" origin="anonymous"
+                      gltf-model="assets/Handsanitizer/handsanitizer.glb"></a-gltf-model>
+        <a-gltf-model src="assets/Handsanitizer/handsanitizer.glb" position="78.568 3.229 24.656"
+                      scale="0.4 -0.49000000000000005 0.67" rotation="0 0 180" cross="" origin="anonymous"
+                      gltf-model="assets/Handsanitizer/handsanitizer.glb"></a-gltf-model>
+        <a-gltf-model src="assets/Handsanitizer/handsanitizer.glb" position="55.931 2.221 12.312"
+                      scale="0.4 -0.49000000000000005 0.67" rotation="0 270 180" cross="" origin="anonymous"
+                      gltf-model="assets/Handsanitizer/handsanitizer.glb"></a-gltf-model>
+        <!--Robot-->
+
+        <a-entity>
+
+            <a-gltf-model  rob  id="robot" animation-mixer="clip: ArmatureAction" visible="false"
+                          src="assets/robots/robot.glb" position="50.329 -0.19 -35.589" scale="4.541 6.779 4.924"
+                          rotation="-87.605 94.481 -179.45" cross="" origin="anonymous"
+                          gltf-model="assets/robots/robot.glb">
+                <a-animation id="try" begin="startAnimation" attribute="position" to="38.631 -0.445 -5.654"
+                             dur="10000"></a-animation>
+            </a-gltf-model>
+        </a-entity>
+
+        <!-- Light Dimmer -->
+        <a-entity onclick="dimmerClick()">
+            <a-text id="dimmerText" value="Dim Lights" align="center" color="#000" position="55.931 3.471 15.058"
+                    scale="1.5 1.5 1.5" rotation="0 93.965078401455 0"></a-text>
+            <a-box position="55.543 2.221 15.262" width="0.5" height="0.75" depth="0.1" color="black"
+                   rotation="0 93.965078401455 0"></a-box>
+            <a-cylinder position="55.608 2.261 15.269" rotation="90.01166961505233 95.34017710976899 0" radius="0.15"
+                        height="0.1" color="grey"></a-cylinder>
+        </a-entity>
+
+<>
+
+        <!--the food court-->
+
+        <!--  <a-gltf-model src="assets/FoodCounter/cafe2.glb" position="75.679 -0.322 -31.846" scale="4 4 4" rotation="-86.23014816718889 -170.1684651538545 82.16214782176004" cross="" origin="anonymous" gltf-model="assets/FoodCounter/cafe2.glb"></a-gltf-model>-->
+        <!--the food court-->
+
+
+        <a-gltf-model src="assets/FoodCounter/cafe.glb" position="72.828 -0.014 -31.846" scale="3 3 3"
+                      rotation="-0.4583662361046586 -93.73589528340267 2.0626480624709633"
+                      material="shader:flat"></a-gltf-model>
+
+        <!-- &lt;!&ndash;Gas Cabinets&ndash;&gt;
+         &lt;!&ndash; Left  &ndash;&gt;
+         <a-entity static-body = "" geometry = "primitive: box; depth: 6; height: 5.8; width: 3" position = "58.5 0 -42" rotation = "0 90 0" material = "shader: standard; roughness: 1; src: url(images/cabinet.jpg); repeat: 2" scale = "" visible = ""></a-entity>
+         <a-entity static-body = "" geometry = "primitive: box; depth: 6; height: 0.5; width: 3" position = "58.5 3 -42" rotation = " 0 90 0" material = "shader: standard; roughness: 1; src: url(images/granite.jpg); repeat: 2" scale = "" visible = ""></a-entity>
+         &lt;!&ndash; Right  &ndash;&gt;
+         <a-entity static-body = "" geometry = "primitive: box; depth: 6; height: 5.8; width: 3" position = "70 0 -42" rotation = "0 90 0" material = "shader: standard; roughness: 1; src: url(images/cabinet.jpg); repeat: 2" scale = "" visible = ""></a-entity>
+         <a-entity static-body = "" geometry = "primitive: box; depth: 6; height: 0.5; width: 3" position = "70 3 -42" rotation = " 0 90 0" material = "shader: standard; roughness: 1; src: url(images/granite.jpg); repeat: 2" scale = "" visible = ""></a-entity>
+-->
+
+        <!-- Sofa  -->
+        <a-gltf-model src="assets/Sofa/scene.gltf" position="43.726 -0.5 18" scale="-5.035 -4.973 3.719"
+                      rotation="180 0 0" cross="" origin="anonymous" gltf-model="assets/Sofa/scene.gltf"></a-gltf-model>
+
+        <!-- Plants -->
+        <a-obj-model id="plant-1" material="" scale="0.05 0.05 0.05" position="77.5 0 15"
+                     src="assets/Plant/spatifilum.obj" mtl="assets/Plant/spatifilum.mtl"></a-obj-model>
+        <a-obj-model id="plant-1" material="" scale="0.06 0.06 0.06" position="68 -0.5 22.5"
+                     src="assets/Plant/spatifilum.obj" mtl="assets/Plant/spatifilum.mtl"></a-obj-model>
+        <a-obj-model id="plant-1" material="" scale="0.06 0.06 0.06" position="53 -0.5 18"
+                     src="assets/Plant/spatifilum.obj" mtl="assets/Plant/spatifilum.mtl"></a-obj-model>
+        <a-obj-model id="plant-1" material="" scale="0.06 0.06 0.06" position="35 -0.5 18"
+                     src="assets/Plant/spatifilum.obj" mtl="assets/Plant/spatifilum.mtl"></a-obj-model>
+
+        <!-- Canteen Table and chairs  -->
+
+        <a-gltf-model id="table-1" material="" scale="0.05 0.05 0.05" position="73.627 -0.348 -23.824"
+                      src="assets/TableChairs/tbc.glb"
+                      rotation="-89.20952870186917 77.92226013779197 -77.92226013779197"
+                      gltf-model="assets/TableChairs/tbc.glb"></a-gltf-model>
+        <a-gltf-model id="table-1" material="" scale="0.05 0.05 0.05" position="65 -0.246 -15"
+                      src="assets/TableChairs/tbc.glb"
+                      rotation="-86.74581018280664 -161.7459855654314 161.86057712445756"
+                      gltf-model="assets/TableChairs/tbc.glb"></a-gltf-model>
+        <a-gltf-model id="table-1" material="" scale="0.05 0.05 0.05" position="75 -0.288 -5"
+                      src="assets/TableChairs/tbc.glb"
+                      rotation="-88.4646835681991 -176.47100090029355 177.73150804958135"
+                      gltf-model="assets/TableChairs/tbc.glb"></a-gltf-model>
+
+        <!-- Arrow Markers -->
+        <!--Floor markings-->
+        <a-entity geometry="depth:0.02;height:7;width:5" position="73.684 -0.184 16.26"
+                  rotation="-89.72519071748692 1.3178029288008934 -177.6742122700683"
+                  material="roughness:1;src:images/directionpatch.jpg" scale="0.704 0.581 0.306"></a-entity>
+        <a-entity geometry="depth:0.02;height:7;width:5" position="60.492 -0.184 5.381"
+                  rotation="-89.72519071748692 87.94902155258136 -177.6742122700683"
+                  material="roughness:1;src:images/directionpatch.jpg" scale="0.704 0.581 0.306"></a-entity>
+        <a-entity geometry="depth:0.02;height:7;width:5" position="44.033 -0.184 5.381"
+                  rotation="-89.72519071748692 87.94902155258136 -177.6742122700683"
+                  material="roughness:1;src:images/directionpatch.jpg" scale="0.704 0.581 0.306"></a-entity>
+        <a-entity geometry="depth:0.02;height:7;width:5" position="28.185 -0.184 5.381"
+                  rotation="-89.72519071748692 87.94902155258136 -177.6742122700683"
+                  material="roughness:1;src:images/directionpatch.jpg" scale="0.704 0.581 0.306"></a-entity>
+        <a-entity geometry="depth:0.02;height:7;width:5" position="28.185 -0.184 -28.699"
+                  rotation="-89.72519071748692 -92.30350079557562 -177.6742122700683"
+                  material="roughness:1;src:images/directionpatch.jpg" scale="0.704 0.581 0.306"></a-entity>
+        <a-entity geometry="depth:0.02;height:7;width:5" position="47.714 -0.184 -28.699"
+                  rotation="-89.72519071748692 -2.4637185190625397 -177.6742122700683"
+                  material="roughness:1;src:images/directionpatch.jpg" scale="0.704 0.581 0.306"></a-entity>
+
+    </a-entity>
+
+</a-scene>
+
+</body>
+</html>
+
+
+
+
