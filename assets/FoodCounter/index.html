@@ -1,0 +1,164 @@
+<html>
+<head>
+    <title>Web VR Covide-19 Environment</title>
+    <!-- <script src="libs/aframe.min.js"></script>
+    <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v1.14.0/dist/aframe-extras.min.js"></script> 
+    <script src="https://dist.3d.io/3dio-js/1.1.x/3dio.min.js"></script>
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://rawgit.com/feiss/aframe-environment-component/master/dist/aframe-environment-component.min.js"></script>
+     -->
+
+     <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
+     <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v1.14.0/dist/aframe-extras.min.js"></script>
+     <script src="https://rawgit.com/feiss/aframe-environment-component/master/dist/aframe-environment-component.min.js"></script>
+     
+
+</head>
+    <body>
+        <a-scene id="scene" shadows="true">
+
+            <!-- 70 1 6 -->
+            <a-entity position="70 1 6" rotation="0 90 0">
+                <a-camera universal-controls>
+                    <a-entity cursor="fuse: true; maxDistance: 20; timeout: 250" position="0 0 -5" geometry="primitive: ring" material="color: white; shader: flat" rotation="" scale="0.1 0.1 0.1" visible="" raycaster="">
+                </a-entity>
+                </a-camera>
+            </a-entity>
+
+
+            <!--Left wall -->
+            <a-entity geometry="primitive: box; depth: 0.6; height: 1; width: 100" position="30 14 25" rotation="0 0 0" material="shader: standard;
+            roughness: 1; src: url(images/beam1.jpg); repeat: 32 1" scale="" visible=""></a-entity>
+            <a-entity static-body="" geometry="primitive: box; depth: 1; height: 14; width: 100" position="30 6.5 25.5" rotation="0 0 0" material="shader: standard;
+            roughness: 1; src: url(images/wall1.jpg); repeat: 12 2" scale="" visible=""></a-entity>
+
+            <!--Right wall -->
+            <a-entity geometry="primitive: box; depth: 0.6; height: 1; width: 102" position="29 14 -45" rotation="0 0 0" material="shader: standard; roughness: 1; src: url(images/beam1.jpg); repeat: 32 1" scale="" visible=""></a-entity>
+            <a-entity static-body="" geometry="primitive: box; depth: 1; height: 14; width: 100" position="30 6.5 -45" rotation="0 0 0" material="shader: standard;roughness: 1; src: url(images/wall3.jpg); repeat: 12 2" scale="" visible=""></a-entity>
+
+            <!--Back wall -->
+            <a-entity  geometry="primitive: box; depth: 0.6; height: 1; width: 70" position="-19 13.8 -10" rotation="0 90 0" material="shader: standard;
+            roughness: 1; src: url(images/beam1.jpg); repeat: 9 1" scale="" visible=""></a-entity>
+            <a-entity static-body="" geometry="primitive: box; depth: 1; height: 14; width: 70" position="-20 6.5 -10" rotation="0 90 0" material="shader: standard;
+            roughness: 1; src: url(images/wall1.jpg); repeat: 4 2" scale="" visible=""></a-entity>
+
+            <!-- Front wall -->
+            <a-entity shadow="cast:true;receive:true;" geometry="primitive: box; depth: 0.6; height: 1; width: 70" position="80 14 -10" rotation="0 90 0" material="shader: standard;
+            roughness: 1; src: url(images/beam1.jpg); repeat: 9 1"></a-entity>
+            <a-entity static-body geometry="primitive: box; depth: 1; height: 14; width: 70" position="80.5 6.5 -10" rotation="0 90 0" material="shader: standard;
+            roughness: 1; src: url(images/wall1.jpg); repeat: 4 2"></a-entity>
+
+            <!-- Ceiling -->
+            <a-entity static-body="" geometry="primitive: box; depth: 70; height: 0.09; width: 100" position="30 14.5 -10" material="shader: flat; side: double; opacity: 1; src: url(images/ceiling.jpg); repeat: 20 12" rotation="" scale="" visible=""></a-entity>
+
+            <!-- Floor -->
+            <a-entity shadow="cast:true;receive:true;"  static-body="" geometry="primitive: box; depth: 70; height: 0.1; width: 100" position="30 -0.5 -10" material="shader: flat; side: double; opacity: 1; src: url(images/woodenfloor.jpg); repeat: 12 5" shadow="cast:true;receive:true;" rotation="" scale="" visible=""></a-entity>
+
+            <!-- Mid-wall -->
+            <!-- Left side  -->
+            <a-entity  geometry="primitive: box; depth: 0.2; height: 1; width: 15.2" position="55.6 14 18" rotation="0 90 0" material="shader: standard; roughness: 1; src: url(images/beam1.jpg); repeat: 9 1" scale="" visible=""></a-entity>
+            <a-entity id="cubeshelf" static-body="" geometry="primitive: box; depth: 1; height: 14.9; width: 15" position="55 7 18" rotation="0 90 0" material="shader: standard;roughness: 1; src: url(images/wall2.jpg); repeat: " scale="" visible=""></a-entity>
+            
+            <!-- Right side  -->
+            <a-entity  geometry="primitive: box; depth: 0.2; height: 1; width: 43" position="55.6 14 -23" rotation="0 90 0" material="shader: standard; roughness: 1; src: url(images/beam1.jpg); repeat: 9 1" scale="" visible=""></a-entity>
+            <a-entity id="cubeshelf" static-body="" geometry="primitive: box; depth: 1; height: 14.9; width: 43" position="55 7 -23" rotation="0 90 0" material="shader: standard;roughness: 1; src: url(images/wall2.jpg); repeat: " scale="" visible=""></a-entity>
+
+            <!-- Mid wall images -->
+            <a-entity geometry="primitive: box; depth: 0.02; height: 5; width: 7" position="55.6 7 -7" rotation="0 90 0" material="shader: standard; roughness: 1; src: url(images/Covid2.jpg); repeat: " scale="" visible=""></a-entity>
+            <a-entity geometry="primitive: box; depth: 0.02; height: 5; width: 3" position="55.6 7 22" rotation="0 90 0" material="shader: standard; roughness: 1; src: url(images/Covid5.jpg); repeat: " scale="" visible=""></a-entity>
+            <a-entity geometry="primitive: box; depth: 0.02; height: 5; width: 3" position="55.6 7 18" rotation="0 90 0" material="shader: standard; roughness: 1; src: url(images/Covid6.jpg); repeat: " scale="" visible=""></a-entity>
+            <a-entity geometry="primitive: box; depth: 0.02; height: 5; width: 3" position="55.6 7 14" rotation="0 90 0" material="shader: standard; roughness: 1; src: url(images/Covid7.jpg); repeat: " scale="" visible=""></a-entity>
+            <a-entity geometry="primitive: box; depth: 0.02; height: 7; width: 5" position="55.6 7 -17" rotation="0 90 0" material="shader: standard; roughness: 1; src: url(images/Covid4.jpg); repeat: " scale="" visible=""></a-entity>
+            
+            <!-- Door side images  -->
+            <a-entity geometry="primitive: box; depth: 0.02; height: 7; width: 5" position="62.5 6 24.8" rotation="0 -180 0" material="shader: standard; roughness: 1; src: url(images/Painting.jpg); repeat: " scale="" visible=""></a-entity>
+            <a-entity geometry="primitive: box; depth: 0.1; height: 9; width: 7" position="62.5 6 24.9" rotation="0 -180 0" material="shader: standard; roughness: 1; src: url(images/Painting_bg.jpg); repeat: " scale="" visible=""></a-entity>
+            
+            <!-- Front wall images  -->
+            <a-entity geometry="primitive: box; depth: 0.02; height: 7; width: 5" position="80 6.5 10" rotation="0 90 0" material="shader: standard; roughness: 1; src: url(images/Covid3.jpg); repeat: " scale="" visible=""></a-entity>
+            
+
+
+            <!-- Ceiling Fan  -->
+            <!-- <a-obj-model rotation="0 0 0" material="" scale="0.04 0.04 0.04" position="60 10 5" src="assets/Fan/fan.obj" mtl="assets/Fan/fan.mtl"> -->
+            <!-- <a-animation begin = "click" attribute = "rotation" from = "0 0 0" to = "360 0 0" dur = "3000"></a-animation> 
+            </a-obj-model>-->
+
+            
+
+            <!-- Ceiling Lights  -->
+            <!-- <a-obj-model material="" scale="0.6 0.6 0.6" rotation="0 0 0" position="60 10 10" src="assets/Lights/track-lights.obj" mtl="assets/Lights/track-lights.mtl"></a-obj-model>
+            <a-obj-model material="" scale="0.6 0.6 0.6" rotation="0 0 0" position="60 10 0" src="assets/Lights/track-lights.obj" mtl="assets/Lights/track-lights.mtl"></a-obj-model>
+            <a-obj-model material="" scale="0.6 0.6 0.6" rotation="90 0 0" position="25 10 20" src="assets/Lights/track-lights.obj" mtl="assets/Lights/track-lights.mtl"></a-obj-model> -->
+            
+
+    
+            <!--Door -->
+            <a-obj-model src="assets/Door/Door.obj" visible="true" mtl="assets/Door/Door.mtl" position="74 -1 25" rotation="0 -180 0" scale="0.9 0.9 0.1" material="" obj-model=""></a-obj-model>
+            
+            <!-- Desktop  -->
+            <a-obj-model src="assets/Desktop/Desktop.obj" visible="true" mtl="assets/Desktop/Desktop.mtl" position="40 0 -5" rotation="0 90 0" scale="0.9 0.9 0.9" material="" obj-model=""></a-obj-model>
+
+            <!-- Door Carpet  -->
+            <a-entity static-body = "" geometry = "primitive: box; depth: 3; height: 0.2; width: 7" position = "74.2 -0.5 22.5" rotation = " 0 0 0" material = "shader: standard; roughness: 1; src: url(images/DoorCarpet.jpg); repeat: 8 4" scale = "" visible = ""></a-entity>
+            
+            <!--Library Bookshelf-->
+            <a-gltf-model src = "assets/Bookshelf/scene.gltf" position = "20 2 23" scale = "-0.25 -0.25 0.1" rotation = "180 0 0" cross origin = "anonymous"></a-gltf-model>
+            <a-gltf-model src = "assets/Bookshelf/scene.gltf" position = "-15 4 17" scale = "-0.25 -0.25 0.1" rotation = "180 270 0" cross origin = "anonymous"></a-gltf-model>
+            <a-gltf-model src = "assets/Bookshelf/scene.gltf" position = "-15 4 7" scale = "-0.25 -0.25 0.1" rotation = "180 270 0" cross origin = "anonymous"></a-gltf-model>
+            <a-gltf-model src = "assets/Bookshelf/scene.gltf" position = "-15 4 -3" scale = "-0.25 -0.25 0.1" rotation = "180 270 0" cross origin = "anonymous"></a-gltf-model>
+            <a-gltf-model src = "assets/Bookshelf/scene.gltf" position = "-15 4 -13" scale = "-0.25 -0.25 0.1" rotation = "180 270 0" cross origin = "anonymous"></a-gltf-model>
+            <a-gltf-model src = "assets/Bookshelf/scene.gltf" position = "-15 4 -23" scale = "-0.25 -0.25 0.1" rotation = "180 270 0" cross origin = "anonymous"></a-gltf-model>
+            <a-gltf-model src = "assets/Bookshelf/scene.gltf" position = "-15 4 -33" scale = "-0.25 -0.25 0.1" rotation = "180 270 0" cross origin = "anonymous"></a-gltf-model>
+            <a-gltf-model src = "assets/Bookshelf/scene.gltf" position = "-5 3.5 -40" scale = "-0.25 -0.25 0.1" rotation = "0 0 180" cross origin = "anonymous"></a-gltf-model>
+            <a-gltf-model src = "assets/Bookshelf/scene.gltf" position = "5 3.5 -40" scale = "-0.25 -0.25 0.1" rotation = "0 0 180" cross origin = "anonymous"></a-gltf-model>
+            <a-gltf-model src = "assets/Bookshelf/scene.gltf" position = "15 3.5 -40" scale = "-0.25 -0.25 0.1" rotation = "0 0 180" cross origin = "anonymous"></a-gltf-model>
+            <a-gltf-model src = "assets/Bookshelf/scene.gltf" position = "25 3.5 -40" scale = "-0.25 -0.25 0.1" rotation = "0 0 180" cross origin = "anonymous"></a-gltf-model>
+            
+                    
+            <!--Gas Cabinets-->                     	            
+            <!-- Left  -->
+            <a-entity static-body = "" geometry = "primitive: box; depth: 6; height: 5.8; width: 3" position = "58.5 0 -42" rotation = "0 90 0" material = "shader: standard; roughness: 1; src: url(images/cabinet.jpg); repeat: 2" scale = "" visible = ""></a-entity>	
+            <a-entity static-body = "" geometry = "primitive: box; depth: 6; height: 0.5; width: 3" position = "58.5 3 -42" rotation = " 0 90 0" material = "shader: standard; roughness: 1; src: url(images/granite.jpg); repeat: 2" scale = "" visible = ""></a-entity>	
+            <!-- Right  -->
+            <a-entity static-body = "" geometry = "primitive: box; depth: 6; height: 5.8; width: 3" position = "70 0 -42" rotation = "0 90 0" material = "shader: standard; roughness: 1; src: url(images/cabinet.jpg); repeat: 2" scale = "" visible = ""></a-entity>	
+            <a-entity static-body = "" geometry = "primitive: box; depth: 6; height: 0.5; width: 3" position = "70 3 -42" rotation = " 0 90 0" material = "shader: standard; roughness: 1; src: url(images/granite.jpg); repeat: 2" scale = "" visible = ""></a-entity>
+            
+            <!--Stove-->
+            <!-- <a-entity static-body = "" geometry = "primitive: box; depth: 50; height: 50; width: 50" position = "65 1.9 -6" rotation = "180 0 0" material = "shader: standard; roughness: 1; src: url(images/stove.jpg); repeat: " scale = "-0.03 -0.07 -0.1" visible = ""></a-entity> -->
+            
+            <!-- Sofa  -->
+            <a-gltf-model src = "assets/Sofa/scene.gltf" position = "45 -0.5 18" scale = "-5.83 -7 6" rotation = "180 0 0" cross origin = "anonymous"></a-gltf-model>
+
+            <!-- Plants -->            
+            <a-obj-model id="plant-1" material="" scale="0.05 0.05 0.05" position="77.5 0 15" src="assets/Plant/spatifilum.obj" mtl="assets/Plant/spatifilum.mtl"></a-obj-model>
+            <a-obj-model id="plant-1" material="" scale="0.06 0.06 0.06" position="68 -0.5 22.5" src="assets/Plant/spatifilum.obj" mtl="assets/Plant/spatifilum.mtl"></a-obj-model>
+            <a-obj-model id="plant-1" material="" scale="0.06 0.06 0.06" position="53 -0.5 18" src="assets/Plant/spatifilum.obj" mtl="assets/Plant/spatifilum.mtl"></a-obj-model>
+            <a-obj-model id="plant-1" material="" scale="0.06 0.06 0.06" position="35 -0.5 18" src="assets/Plant/spatifilum.obj" mtl="assets/Plant/spatifilum.mtl"></a-obj-model>
+            
+            <!-- Canteen Table and chairs  -->
+            <a-obj-model id="table-1" material="" scale="0.05 0.05 0.05" position="72 0 -25" src="assets/TableChairs/TableAndChairs.obj" mtl="assets/TableChairs/TableAndChairs.mtl"></a-obj-model>     
+            <a-obj-model id="table-1" material="" scale="0.05 0.05 0.05" position="65 0 -15" src="assets/TableChairs/TableAndChairs.obj" mtl="assets/TableChairs/TableAndChairs.mtl"></a-obj-model>
+            <a-obj-model id="table-1" material="" scale="0.05 0.05 0.05" position="75 0 -5" src="assets/TableChairs/TableAndChairs.obj" mtl="assets/TableChairs/TableAndChairs.mtl"></a-obj-model>
+            
+
+            <!--Globe-->
+			<a-sphere class = "intersectable" position = "72 3 -25" radius = "0.7" rotation = "0 0 0" src = "images/globe.jpg">
+			<a-animation begin = "click" attribute = "rotation" from = "0 0 0" to = "0 360 0" dur = "3000"></a-animation>
+            </a-sphere>
+
+            <!-- Radio -->
+            <!-- https://free3d.com/ -->
+            <!-- <a-entity id="radio" collada-model="url(assets/radio/Radio_BI_dae.dae)" rotation="0 90 0" position="45 5 -5.5" visible="" scale="0.2 0.2 0.2">
+            </a-entity> -->
+                        
+            <!--Text-->
+			<!-- <a-text value = "Click the globe" color = "red" rotation = "0 0 0" position = "67.5 4 -7" scale = "2 2 2"></a-text> -->
+
+        </a-scene>
+    </body>
+    </html>
+
+
+
+

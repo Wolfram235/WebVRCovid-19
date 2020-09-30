@@ -1,0 +1,28 @@
+Things u can add/change (in my opinion)
+
+-----CANTEEN----
+- You have to add gas stove between two gas cabinets
+- You have to add the food/bill counter
+- can add more Covid/Canteen related images to wall(Midwall, Front wall)
+
+
+-----LIBRARY----
+- Add a help desk(i found one 3d model but its color is white i dont know why its showing in white color - u can find desk ka 3d model in Models ka folder which i kwept separate)
+- Add a sofa (same that is there) right wall k udhar in opposite direction to the sofa which is already there
+- add desktops in a row (direction u may choose - i mean kis taraf face karega vo)
+- add few more bookshelves to the left side wall (one is already there just replicate that particular code and change position)
+- add few more plants every corner of the library area(bookshelves k baaju me back wall k)(everything else seems fine for me else u can change as per ur needs)
+
+-----IN GENERAL------
+- Add lights (i forgot that... if u have dream home ka code ul find light/lamps in that code)
+- add animation to objects (maine globle k liye toh dal diya - u can add for fans, lamp/lights, monitor on off, radio ka u can(iska code hai isme just check if its executing properly) BAAKI TU DEKH APNE MANN SE JO THEEK LAG TUJE)
+- window u can add (ek toh window hona chahiye see if u can)
+- add fans too (this code too ul find in dream home k code me)
+what else do you need(i cant think of anything its 11:40pm now and i am sleepy... hehehe)
+
+(everything else seems fine for me else u can change as per ur needs)
+
+- YES ONE IMPORTANT THING, PLEASE DO ADJUST THE POSITIONS OF ALL THE OBJECTS because i couldnt do that inspector ka thing.... i tried but tere jaise nahi dikha muje... i dont know tune kaise dekha but i couldnt....
+
+
+ALL THE VERY BEST PIIIGGGGYYYY :) ..... WHEN YOU FINISH THIS PROJECT PLEASE DO SHARE IT WITH ME I WOULD LOVE TO SEE WHAT YOU HAV DONE :)
