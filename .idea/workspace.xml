@@ -1,19 +1,71 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:master" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </select>
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="0e954b7e-9946-4a03-a70c-54d5cf9e33c6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/audio/bell.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/audio/oc.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/Sd.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/elevator.jpg" afterDir="false" />
+    <list default="true" id="0e954b7e-9946-4a03-a70c-54d5cf9e33c6" name="Default Changelist" comment="sat final">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/Handsanitizer/handsanitizer.glb" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Handsanitizer/handsanitizer.glb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handsan.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/scene.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Fan/fan.mtl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Fan/fan.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Fan/shiny.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/LampTable/glass-a04.mtl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/LampTable/glass-a04.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/LampTable/glasswear.mtl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/LampTable/glasswear.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/LampTable/hood.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/LampTable/petiteTableSalon.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/LampTable/puerta.mtl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/LampTable/puerta.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/LampTable/salontafel.mtl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/LampTable/salontafel.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/LampTable/shiny.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/LampTable/siameseCat.mtl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/LampTable/siameseCat.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/LampTable/tilewood.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Lamps/deskLamp1.mtl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Lamps/deskLamp1.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Lamps/lightSwitch.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Lamps/track-lights.mtl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Lamps/track-lights.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Stove/AUTHOR" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Stove/scene.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Stove/scene.gltf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Stove/textures/Ovenuccio1_diffuse.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Stove/textures/Ovenuccio1_emissive.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Stove/textures/Ovenuccio1_occlusion.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Stove/textures/Ovenuccio1_specularGlossiness.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/q/123.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/q/1234.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/q/12345.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/q/desktop.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/q/desktop.mtl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/q/desktop.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/q/desktop.stl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/q/desktop.x3d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/q/untitled.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scene.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/scene2.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,18 +92,20 @@
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/audio" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/index.html" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
+    <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/index.html" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Benjamin\Downloads\WebVRCovid-19\WebVRCovid-19" />
+      <recent name="C:\Users\Benjamin\Downloads\WebVRCovid-19\WebVRCovid-19\images" />
+      <recent name="C:\Users\Benjamin\Downloads\WebVRCovid-19\WebVRCovid-19\js" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Benjamin\Downloads\WebVRCovid-19\WebVRCovid-19\audio" />
       <recent name="C:\Users\Benjamin\Downloads\WebVRCovid-19\WebVRCovid-19" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Benjamin\Downloads\WebVRCovid-19\WebVRCovid-19\images" />
-      <recent name="C:\Users\Benjamin\Downloads\WebVRCovid-19\WebVRCovid-19" />
-      <recent name="C:\Users\Benjamin\Downloads\WebVRCovid-19\WebVRCovid-19\js" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -77,7 +131,11 @@
       <workItem from="1601604753361" duration="18930000" />
       <workItem from="1601744508717" duration="4034000" />
       <workItem from="1601751100288" duration="20933000" />
-      <workItem from="1601777269251" duration="619000" />
+      <workItem from="1601777269251" duration="3478000" />
+      <workItem from="1601780959464" duration="2588000" />
+      <workItem from="1601783757957" duration="1424000" />
+      <workItem from="1601785284686" duration="1012000" />
+      <workItem from="1601838953081" duration="15228000" />
     </task>
     <task id="LOCAL-00001" summary="1st">
       <created>1601506839623</created>
@@ -86,52 +144,110 @@
       <option name="project" value="LOCAL" />
       <updated>1601506839623</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="sat final">
+      <created>1601778042748</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1601778042748</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="BEK_SORT_TYPE" value="1" />
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="1st" />
-    <option name="LAST_COMMIT_MESSAGE" value="1st" />
+    <MESSAGE value="sat final" />
+    <option name="LAST_COMMIT_MESSAGE" value="sat final" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1601778710019">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824/-1366.188.1366.768@0.0.1536.824" timestamp="1601778710019" />
     <state x="513" y="214" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1600903920546">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="513" y="214" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824/270.-768.1366.768@0.0.1536.824" timestamp="1600903920546" />
-    <state x="370" y="0" key="CommitChangelistDialog2" timestamp="1601506839010">
+    <state x="370" y="0" key="CommitChangelistDialog2" timestamp="1601778094646">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
+    <state x="370" y="0" key="CommitChangelistDialog2/0.0.1536.824/-1366.188.1366.768@0.0.1536.824" timestamp="1601778094646" />
     <state x="370" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1601506839010" />
-    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1601502135932">
+    <state x="93" y="93" width="1350" height="638" maximized="true" key="DiffContextDialog" timestamp="1601784289638">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1601502135932" />
-    <state x="631" y="310" key="Github.ShareDialog" timestamp="1601505487299">
+    <state x="93" y="93" width="1350" height="638" maximized="true" key="DiffContextDialog/0.0.1536.824@0.0.1536.824" timestamp="1601784289638" />
+    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1601781679459">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
+    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1601781679459" />
+    <state x="631" y="310" key="Github.ShareDialog" timestamp="1601778410927">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="631" y="310" key="Github.ShareDialog/0.0.1536.824/-1366.188.1366.768@0.0.1536.824" timestamp="1601778410927" />
     <state x="631" y="310" key="Github.ShareDialog/0.0.1536.824@0.0.1536.824" timestamp="1601505487299" />
     <state x="511" y="117" key="Github.UntrackedFilesDialog" timestamp="1601505501351">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="511" y="117" key="Github.UntrackedFilesDialog/0.0.1536.824@0.0.1536.824" timestamp="1601505501351" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1601506929302">
+    <state x="504" y="115" key="RollbackChangesDialog" timestamp="1601781297282">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
+    <state x="504" y="115" key="RollbackChangesDialog/0.0.1536.824/-1366.188.1366.768@0.0.1536.824" timestamp="1601780674355" />
+    <state x="504" y="115" key="RollbackChangesDialog/0.0.1536.824@0.0.1536.824" timestamp="1601781297282" />
+    <state x="277" y="57" key="SettingsEditor" timestamp="1601785143317">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="277" y="57" key="SettingsEditor/0.0.1536.824/-1366.188.1366.768@0.0.1536.824" timestamp="1601778261357" />
+    <state x="277" y="57" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1601785143317" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1601778972480">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824/-1366.188.1366.768@0.0.1536.824" timestamp="1601778972480" />
     <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1601506929302" />
     <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1601506901185">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1601506901185" />
+    <state x="543" y="314" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1601778965548">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="543" y="314" key="git4idea.remote.GitConfigureRemotesDialog/0.0.1536.824/-1366.188.1366.768@0.0.1536.824" timestamp="1601778965548" />
     <state x="425" y="187" key="run.anything.popup" timestamp="1601773912223">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="425" y="187" key="run.anything.popup/0.0.1536.824/-1366.188.1366.768@0.0.1536.824" timestamp="1601773912223" />
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1601502059528">
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1601848806017">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1601502059528" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1601848806017" />
   </component>
 </project>
