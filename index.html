@@ -13,6 +13,7 @@
     <script src="js/envcomponent.js"></script>
     <script type="text/javascript">
         var covid = false;
+        var LiftOpen = false;
 
         function change() {
             console.log("Changing");
@@ -21,9 +22,11 @@
             covid = !covid;
             if (covid) {
                 var text = document.querySelector("#covid");
-                text.innerHtml = 'Turn Off C-19 Mode';
+                document.getElementById("covidLabel").setAttribute("value", "Exit Covid Mode");
+
             } else {
-                text.innerHTML = 'Turn On C-19 Mode';
+                document.getElementById("covidLabel").setAttribute("value", "Enter Covid Mode");
+
             }
         }
 
@@ -50,17 +53,116 @@
                     var a = document.getElementById("try");
                     var mode = document.getElementById("scene1").getAttribute("visible");
                     console.log("nimating");
-                    if(!mode){
-                        document.getElementById("robot").setAttribute("visible","true");
+                    if (!mode) {
+                        document.getElementById("robot").setAttribute("visible", "true");
                         a.emit("startAnimation");
                         a.addEventListener('animationend', function () {
                             document.getElementById("robot").setAttribute("animation-mixer", "clip: wiping");
                         });
-                        setTimeout(function(){      document.getElementById("robot").setAttribute("visible","false");  document.getElementById("robot").setAttribute("animation-mixer", "clip: ArmatureAction"); }, 20000);
-                    }
-                    else{
+                        setTimeout(function () {
+                            document.getElementById("robot").setAttribute("visible", "false");
+                            document.getElementById("robot").setAttribute("animation-mixer", "clip: ArmatureAction");
+                        }, 10000);
+                    } else {
 
                     }
+
+                });
+            }
+        });
+
+        AFRAME.registerComponent('liftbutton', {
+            init: function () {
+                console.log("registered the lift BUtton");
+                this.el.addEventListener('click', function (evt) {
+
+                    if (LiftOpen) {
+                        var leftdoorp = document.getElementById("closep");
+                        var leftdoors = document.getElementById("closes");
+
+                        var rightdoorp = document.getElementById("closelp");
+                        var rightdoors = document.getElementById("closels");
+
+                        LiftOpen = false;
+                        leftdoorp.emit("startAnimationClose");
+                        leftdoors.emit("startAnimationClose");
+                        rightdoorp.emit("startAnimationClose");
+                        rightdoors.emit("startAnimationClose");
+
+                    } else {
+                        var leftdoorp = document.getElementById("openp");
+                        var leftdoors = document.getElementById("opens");
+
+                        var rightdoorp = document.getElementById("openlp");
+                        var rightdoors = document.getElementById("openls");
+
+                        let audio = document.querySelector("#bell");
+                        audio.play();
+                        LiftOpen = true;
+                        leftdoorp.emit("startAnimation");
+                        leftdoors.emit("startAnimation");
+                        rightdoorp.emit("startAnimation");
+                        rightdoors.emit("startAnimation");
+                        console.log("nimating");
+                    }
+
+                });
+            }
+        });
+        AFRAME.registerComponent('covidbutton', {
+            init: function () {
+                console.log("registered the covid BUtton");
+                this.el.addEventListener('click', function (evt) {
+                    var leftdoorp = document.getElementById("closep");
+                    var leftdoors = document.getElementById("closes");
+
+                    var rightdoorp = document.getElementById("closelp");
+                    var rightdoors = document.getElementById("closels");
+
+                    let audio = document.querySelector("#oc");
+                    if (LiftOpen) {
+
+
+                        leftdoorp.emit("startAnimationClose");
+                        leftdoors.emit("startAnimationClose");
+                        rightdoorp.emit("startAnimationClose");
+                        rightdoors.emit("startAnimationClose");
+                        audio.play();
+                        setTimeout(function () {
+                            var leftdoorp = document.getElementById("openp");
+                            var leftdoors = document.getElementById("opens");
+
+                            var rightdoorp = document.getElementById("openlp");
+                            var rightdoors = document.getElementById("openls");
+                            LiftOpen = true;
+
+                            leftdoorp.emit("startAnimation");
+                            leftdoors.emit("startAnimation");
+                            rightdoorp.emit("startAnimation");
+                            rightdoors.emit("startAnimation");
+
+                        }, 8000);
+
+                    } else {
+
+                        audio.play();
+                        setTimeout(function () {
+                            var leftdoorp = document.getElementById("openp");
+                            var leftdoors = document.getElementById("opens");
+
+                            var rightdoorp = document.getElementById("openlp");
+                            var rightdoors = document.getElementById("openls");
+
+                            LiftOpen = true;
+                            leftdoorp.emit("startAnimation");
+                            leftdoors.emit("startAnimation");
+                            rightdoorp.emit("startAnimation");
+                            rightdoors.emit("startAnimation");
+
+                        }, 8000);
+                    }
+                    console.log("nimating");
+                    change();
 
                 });
             }
@@ -84,6 +186,8 @@
                 dim = false;
             }
         }
+
+
     </script>
     <style>
         /* This changes the title of the loading screen */
@@ -94,11 +198,15 @@
 
 </head>
 <body>
-<button id="covid" onClick="change()">Covid ON/OFF</button>
+
 <!-- 70 1 6 -->
 <a-scene raycaster-autorefresh light="defaultLightsEnabled: true" id="scene"
          loading-screen="dotsColor: red; backgroundColor: black" shadows="false" class="fullscreen" inspector=""
          renderer="colorManagement: true">
+    <a-assets>
+        <audio id="bell" crossorigin="anonymous" src="audio/bell.mp3"></audio>
+        <audio id="oc" crossorigin="anonymous" src="audio/oc.mp3"></audio>
+    </a-assets>
     <a-entity position="70 1 6" rotation="0 90 0">
         <!-- <a-camera universal-controls  wasd-controls="acceleration: 300"  look-controls="pointerLockEnabled: true;">
             &lt;!&ndash; <a-entity  cursor="fuse: true; maxDistance: 150; timeout: 250" position="0 0 -5" geometry="primitive: ring" material="color: white; shader: flat" rotation="" scale="0.1 0.1 0.1" visible="">
@@ -108,7 +216,7 @@
              <a-box id="boxId" position="-8.32 4.068 -6.774" rotation="-4.469070802020421 43.88856710702106 12.37588837482578" color="#d3d3d3 " scale="1.027 0.4 0.4"></a-box>
 
          </a-camera>-->
-        <a-camera universal-controls wasd-controls="acceleration: 300" look-controls="pointerLockEnabled: true;">
+        <a-camera universal-controls wasd-controls="acceleration: 100" look-controls="pointerLockEnabled: true;">
 
             <a-cursor raycaster="" cursor=""></a-cursor>
 
@@ -189,18 +297,11 @@
                   material="shader: standard; roughness: 1; src: url(images/Painting_bg.jpg); repeat: " scale=""
                   visible=""></a-entity>
 
-        <!-- Ceiling Fan  -->
-        <!-- <a-obj-model rotation="0 0 0" material="" scale="0.04 0.04 0.04" position="60 10 5" src="assets/Fan/fan.obj" mtl="assets/Fan/fan.mtl"> -->
-        <!-- <a-animation begin = "click" attribute = "rotation" from = "0 0 0" to = "360 0 0" dur = "3000"></a-animation>
-        </a-obj-model>-->
-
 
         <!-- Ceiling Lights  -->
-        <!-- <a-obj-model material="" scale="0.6 0.6 0.6" rotation="0 0 0" position="60 10 10" src="assets/Lights/track-lights.obj" mtl="assets/Lights/track-lights.mtl"></a-obj-model>
-        <a-obj-model material="" scale="0.6 0.6 0.6" rotation="0 0 0" position="60 10 0" src="assets/Lights/track-lights.obj" mtl="assets/Lights/track-lights.mtl"></a-obj-model>
-        <a-obj-model material="" scale="0.6 0.6 0.6" rotation="90 0 0" position="25 10 20" src="assets/Lights/track-lights.obj" mtl="assets/Lights/track-lights.mtl"></a-obj-model> -->
-
-
+        <a-obj-model material="" scale="0.6 0.6 0.6" rotation="43.14372197335099 174.06457816074408 -1.4323944878270582"
+                     position="62.776 14.269 -27.593" src="assets/Lights/track-lights.obj"
+                     mtl="assets/Lights/track-lights.mtl"></a-obj-model>
         <!--Door -->
         <a-entity door-toggle class="intersectable">
             <a-obj-model src="assets/Door/Door.obj" visible="true" mtl="assets/Door/Door.mtl" position="74 -1 25"
@@ -242,7 +343,9 @@
                   visible=""></a-entity>
 
         <!--Library Bookshelf-->
-        <a-gltf-model src="assets/Bookshelf/scene.gltf" position="20 3.886 23" scale="-0.25 -0.25 0.1" rotation="180 0 0" cross="" origin="anonymous" gltf-model="assets/Bookshelf/scene.gltf"></a-gltf-model>
+        <a-gltf-model src="assets/Bookshelf/scene.gltf" position="20 3.886 23" scale="-0.25 -0.25 0.1"
+                      rotation="180 0 0" cross="" origin="anonymous"
+                      gltf-model="assets/Bookshelf/scene.gltf"></a-gltf-model>
         <a-gltf-model src="assets/Bookshelf/scene.gltf" position="-15 4 17" scale="-0.25 -0.25 0.1" rotation="180 270 0"
                       cross origin="anonymous"></a-gltf-model>
         <a-gltf-model src="assets/Bookshelf/scene.gltf" position="-15 4 7" scale="-0.25 -0.25 0.1" rotation="180 270 0"
@@ -263,25 +366,6 @@
                       cross origin="anonymous"></a-gltf-model>
         <a-gltf-model src="assets/Bookshelf/scene.gltf" position="25 3.5 -40" scale="-0.25 -0.25 0.1" rotation="0 0 180"
                       cross origin="anonymous"></a-gltf-model>
-
-
-        <!--hand sanitizers-->
-
-        <!--the food court-->
-       <!-- <a-entity fbx-model="src: assets/FoodCounter/cafe.glb" material="color: red" crossorigin="anonymous">-->
-            <!--<a-obj-model id="plant-1" material="" scale="0.05 0.05 0.05" position="77.5 0 15"
-                         src="assets/FoodCounter/3d-model.obj" mtl="assets/FoodCounter/untitled.mtl" ></a-obj-model>-->
-
-        <!-- &lt;!&ndash;Gas Cabinets&ndash;&gt;
-         &lt;!&ndash; Left  &ndash;&gt;
-         <a-entity static-body = "" geometry = "primitive: box; depth: 6; height: 5.8; width: 3" position = "58.5 0 -42" rotation = "0 90 0" material = "shader: standard; roughness: 1; src: url(images/cabinet.jpg); repeat: 2" scale = "" visible = ""></a-entity>
-         <a-entity static-body = "" geometry = "primitive: box; depth: 6; height: 0.5; width: 3" position = "58.5 3 -42" rotation = " 0 90 0" material = "shader: standard; roughness: 1; src: url(images/granite.jpg); repeat: 2" scale = "" visible = ""></a-entity>
-         &lt;!&ndash; Right  &ndash;&gt;
-         <a-entity static-body = "" geometry = "primitive: box; depth: 6; height: 5.8; width: 3" position = "70 0 -42" rotation = "0 90 0" material = "shader: standard; roughness: 1; src: url(images/cabinet.jpg); repeat: 2" scale = "" visible = ""></a-entity>
-         <a-entity static-body = "" geometry = "primitive: box; depth: 6; height: 0.5; width: 3" position = "70 3 -42" rotation = " 0 90 0" material = "shader: standard; roughness: 1; src: url(images/granite.jpg); repeat: 2" scale = "" visible = ""></a-entity>
--->
-        <!--Stove-->
-        <!-- <a-entity static-body = "" geometry = "primitive: box; depth: 50; height: 50; width: 50" position = "65 1.9 -6" rotation = "180 0 0" material = "shader: standard; roughness: 1; src: url(images/stove.jpg); repeat: " scale = "-0.03 -0.07 -0.1" visible = ""></a-entity> -->
 
         <!-- Sofa  -->
         <a-gltf-model src="assets/Sofa/scene.gltf" position="43.726 -0.5 18" scale="-5.035 -4.973 3.719"
@@ -308,23 +392,11 @@
                      src="assets/TableChairs/TableAndChairs.obj"
                      mtl="assets/TableChairs/TableAndChairs.mtl"></a-obj-model>
 
-        <!--the cleaning robot-->
+        <!--foodCourt-->
+        <a-gltf-model src="assets/FoodCounter/back.glb" position="68.223 -0.322 -34.641" scale="3 3 3"
+                      rotation="0.057295779513082325 -93.73589528340267 2.0053522829578814" cross="" origin="anonymous"
+                      gltf-model="assets/FoodCounter/back.glb"></a-gltf-model>
 
-        <!--   <a-gltf-model src="assets/robots/robot.glb" position="55.931 2.221 12.312"
-                         scale="4 4 4" rotation="0 270 180" cross="" origin="anonymous"
-                         gltf-model="assets/robots/robot.glb"animation-mixer="clip: ArmatureAction"
-                         playbackSpeed="0.4" addLights="true"
-           ></a-gltf-model>-->
-     <!--   <a-entity>
-
-            <a-gltf-model rob animation-mixer="clip: ArmatureAction" event-set__click="visible:false" id="rob"
-                          src="assets/robots/robot.glb" position="50.329 -0.19 -35.589" scale="4.541 6.779 4.924"
-                          rotation="-87.605 94.481 -179.45" cross="" origin="anonymous"
-                          gltf-model="assets/robots/robot.glb">
-                <a-animation id="try" begin="startAnimation" attribute="position" to="38.631 -0.445 -5.654"
-                             dur="10000"></a-animation>
-            </a-gltf-model>
-        </a-entity>-->
         <!-- Light Dimmer -->
         <a-entity onclick="dimmerClick()">
             <a-text id="dimmerText" value="Dim Lights" align="center" color="#000" position="55.931 3.471 15.058"
@@ -336,20 +408,9 @@
         </a-entity>
 
 
-        <!--Globe-->
-<!--        <a-sphere event-set__mouseenter="material.color: blue" class="intersectable" position="72 3 -25" radius="0.7"
-                  rotation="0 0 0" src="images/globe.jpg">
-            <a-animation begin="click" attribute="rotation" from="0 0 0" to="0 360 0" dur="3000"></a-animation>
-        </a-sphere>-->
 
-        <!-- Radio -->
-        <!-- https://free3d.com/ -->
-        <!-- <a-entity id="radio" collada-model="url(assets/radio/Radio_BI_dae.dae)" rotation="0 90 0" position="45 5 -5.5" visible="" scale="0.2 0.2 0.2">
-        </a-entity> -->
-
-        <!--Text-->
-        <!-- <a-text value = "Click the globe" color = "red" rotation = "0 0 0" position = "67.5 4 -7" scale = "2 2 2"></a-text> -->
-    </a-entity><!--
+    </a-entity>
+    <!--
         *****************************************************************************************************
         *****************************************************************************************************
         *****************************************************************************************************
@@ -358,6 +419,7 @@
         *****************************************************************************************************
         *****************************************************************************************************
         *****************************************************************************************************-->
+
     <a-entity id="scene2" visible="false">
         <!--Left wall -->
         <a-entity geometry="primitive: box; depth: 0.6; height: 1; width: 100" position="30 14 25" rotation="0 0 0"
@@ -459,7 +521,8 @@
                      rotation="0 -180 0" scale="0.9 0.9 0.1" material=""></a-obj-model>
         <!-- Desktop  -->
 
-        <a-text id="pc" value="Click Here to clean this desk" align="center" color="#000" position="36.629 2.843 -5" scale="1.027 1 1" rotation="0 90 0" text="color:#FFFFF"></a-text>
+        <a-text id="pc" value="Click Here to clean this desk" align="center" color="#000" position="36.629 2.843 -5"
+                scale="1.027 1 1" rotation="0 90 0" text="color:#FFFFF"></a-text>
         <a-gltf-model table src="assets/Desktop/Desktop.glb" position="40 -0.445 -5" scale="0.465 0.482 0.514" cross=""
                       origin="anonymous" gltf-model="assets/Desktop/Desktop.glb">
 
@@ -542,13 +605,14 @@
 
         <a-entity>
 
-            <a-gltf-model  rob  id="robot" animation-mixer="clip: ArmatureAction" visible="false"
-                          src="assets/robots/robot.glb" position="50.329 -0.19 -35.589" scale="4.541 6.779 4.924"
+            <a-gltf-model rob id="robot" animation-mixer="clip: ArmatureAction" visible="false"
+                          src="assets/robots/robot.glb" position="53.899 -0.19 -4.855" scale="4.541 6.779 4.924"
                           rotation="-87.605 94.481 -179.45" cross="" origin="anonymous"
                           gltf-model="assets/robots/robot.glb">
                 <a-animation id="try" begin="startAnimation" attribute="position" to="38.631 -0.445 -5.654"
-                             dur="10000"></a-animation>
+                             dur="5000"></a-animation>
             </a-gltf-model>
+
         </a-entity>
 
         <!-- Light Dimmer -->
@@ -561,26 +625,7 @@
                         height="0.1" color="grey"></a-cylinder>
         </a-entity>
 
-<>
 
-        <!--the food court-->
-
-        <!--  <a-gltf-model src="assets/FoodCounter/cafe2.glb" position="75.679 -0.322 -31.846" scale="4 4 4" rotation="-86.23014816718889 -170.1684651538545 82.16214782176004" cross="" origin="anonymous" gltf-model="assets/FoodCounter/cafe2.glb"></a-gltf-model>-->
-        <!--the food court-->
-
-
-        <a-gltf-model src="assets/FoodCounter/cafe.glb" position="72.828 -0.014 -31.846" scale="3 3 3"
-                      rotation="-0.4583662361046586 -93.73589528340267 2.0626480624709633"
-                      material="shader:flat"></a-gltf-model>
-
-        <!-- &lt;!&ndash;Gas Cabinets&ndash;&gt;
-         &lt;!&ndash; Left  &ndash;&gt;
-         <a-entity static-body = "" geometry = "primitive: box; depth: 6; height: 5.8; width: 3" position = "58.5 0 -42" rotation = "0 90 0" material = "shader: standard; roughness: 1; src: url(images/cabinet.jpg); repeat: 2" scale = "" visible = ""></a-entity>
-         <a-entity static-body = "" geometry = "primitive: box; depth: 6; height: 0.5; width: 3" position = "58.5 3 -42" rotation = " 0 90 0" material = "shader: standard; roughness: 1; src: url(images/granite.jpg); repeat: 2" scale = "" visible = ""></a-entity>
-         &lt;!&ndash; Right  &ndash;&gt;
-         <a-entity static-body = "" geometry = "primitive: box; depth: 6; height: 5.8; width: 3" position = "70 0 -42" rotation = "0 90 0" material = "shader: standard; roughness: 1; src: url(images/cabinet.jpg); repeat: 2" scale = "" visible = ""></a-entity>
-         <a-entity static-body = "" geometry = "primitive: box; depth: 6; height: 0.5; width: 3" position = "70 3 -42" rotation = " 0 90 0" material = "shader: standard; roughness: 1; src: url(images/granite.jpg); repeat: 2" scale = "" visible = ""></a-entity>
--->
 
         <!-- Sofa  -->
         <a-gltf-model src="assets/Sofa/scene.gltf" position="43.726 -0.5 18" scale="-5.035 -4.973 3.719"
@@ -611,7 +656,14 @@
                       rotation="-88.4646835681991 -176.47100090029355 177.73150804958135"
                       gltf-model="assets/TableChairs/tbc.glb"></a-gltf-model>
 
-        <!-- Arrow Markers -->
+        <!--foodCourt-->
+        <a-gltf-model src="assets/FoodCounter/back.glb" position="68.223 -0.322 -34.641" scale="3 3 3"
+                      rotation="0.057295779513082325 -93.73589528340267 2.0053522829578814" cross="" origin="anonymous"
+                      gltf-model="assets/FoodCounter/back.glb"></a-gltf-model>
+<!--FoodCourt Markings-->
+        <a-entity geometry="depth:0.02;height:7;width:5" position="61.471 -0.428 -23.283" rotation="-89.725 180.023 -177.674" material="roughness:1;src:images/Sd.jpg" scale="0.556 0.4 0.306" id="socialD-3"></a-entity>
+        <a-entity geometry="depth:0.02;height:7;width:5" position="61.471 -0.428 -32.27" rotation="-89.725 180.023 -177.674" material="roughness:1;src:images/Sd.jpg" scale="0.556 0.4 0.306" id="socialD-4"></a-entity>
+
         <!--Floor markings-->
         <a-entity geometry="depth:0.02;height:7;width:5" position="73.684 -0.184 16.26"
                   rotation="-89.72519071748692 1.3178029288008934 -177.6742122700683"
@@ -633,6 +685,60 @@
                   material="roughness:1;src:images/directionpatch.jpg" scale="0.704 0.581 0.306"></a-entity>
 
     </a-entity>
+
+   <!-- Common Stuff-->
+    <!--Lift-->
+    <a-entity position="46.757 -0.445 -15.376" rotation="0 -180.02333923010465 0" id="Lift">
+        <a-entity position="0.031 4.654 0" scale="0.436 0.71 1" geometry="depth:2.83;height:12.99" id="LiftDoorRight" material="src:images/elevator.jpg">
+            <a-animation id="openlp" begin="startAnimation"  attribute="position" to="0.031 4.654 1.417" dur="1000" ></a-animation>
+            <a-animation id="openls" begin="startAnimation"  attribute="scale" to="0.436 0.71 0.206" dur="1000" ></a-animation>
+
+            <a-animation id="closelp" begin="startAnimationClose"  attribute="position" from="0.031 4.654 1.417" to="0.031 4.654 0" dur="1000" ></a-animation>
+            <a-animation id="closels" begin="startAnimationClose"  attribute="scale" from="0.436 0.71 0.206" to="0.436 0.71 1" dur="1000" ></a-animation>
+        </a-entity>
+        <a-entity   position="0 4.654 -2.835" scale="0.436 0.71 1" geometry="depth:2.83;height:12.99" id="LiftDoorLeft" material="src:images/elevator.jpg"wwwwwww>
+            <a-animation id="openp" begin="startAnimation"  attribute="position" to="0 4.654 -4.37" dur="1000" ></a-animation>
+            <a-animation id="opens" begin="startAnimation"  attribute="scale" to="0.436 0.71 0.097" dur="1000" ></a-animation>
+
+            <a-animation id="closep" begin="startAnimationClose"  attribute="position" from="0 4.654 -4.37" to="0 4.654 -2.835" dur="1000" ></a-animation>
+            <a-animation id="closes" begin="startAnimationClose"  attribute="scale" from="0.436 0.71 0.097"to="0.436 0.71 1" dur="1000" ></a-animation>
+        </a-entity>
+        <a-entity position="-3.349 4.654 -4.734" scale="7.103 0.71 0.338" geometry="depth:2.83;height:12.99" id="leftwall" material="src:images/elevator.jpg"></a-entity>
+
+        <a-entity position="-3.464 9.086 -1.396" rotation="90.01166961505233 0 0" scale="7.269 0.559 0.338" geometry="depth:2.83;height:12.99" id="liftCeil"material="src:images/elevator.jpg"></a-entity>
+        <a-entity position="-3.335 4.654 1.904" scale="7.103 0.71 0.338" geometry="depth:2.83;height:12.99" id="Rightwall"material="src:images/elevator.jpg"></a-entity>
+        <a-entity position="-7.157 4.654 -1.313" rotation="0 90 0" scale="7.103 0.71 0.338" geometry="depth:2.83;height:12.99" id="BackWall"material="src:images/elevator.jpg"></a-entity>
+
+        <a-entity covidbutton id="covidbutton">
+            <a-text id="covidLabel" value="Enter Covid Mode" align="center" color="#000" position="-1.969 4.27 1.29"
+                    scale="1.5 1.5 1.5" rotation="0 180 0" text=""></a-text>
+            <a-box position="-1.666 3.447 1.397" width="0.5" height="0.75" depth="0.1" color="black"></a-box>
+            <a-cylinder position="-1.666 3.447 1.343" rotation="90 0 0" radius="0.15" height="0.1" color="grey"></a-cylinder>
+        </a-entity>
+
+        <a-entity liftbutton="" id="liftbutton" >
+
+            <a-text id="liftCall" value="Covid \n Lift" align="center" color="#000" position="0.256 4.248 -4.707" scale="1.5 1.5 1.5" rotation="0 90.01166961505233 0"></a-text>
+            <a-box position="0.234 3.447 -4.801" width="0.5" height="0.75" depth="0.1" color="black" rotation="0 85.77178193108425 0"></a-box>
+            <a-cylinder position="0.302 3.447 -4.801" rotation="90 90 0" radius="0.15" height="0.1" color="grey"></a-cylinder>
+        </a-entity>
+
+
+
+        <a-entity position="-3.874 6.752 -5.109" scale="7.103 1.252 0.338" geometry="depth:2.83;height:12.99"
+                  id="Bleftwall" material="src:images/elevator.jpg"></a-entity>
+        <a-entity position="-4.243 6.987 1.859" scale="7.103 1.252 0.338" geometry="depth:2.83;height:12.99"
+                  id="B_rightwall" material="src:images/elevator.jpg"></a-entity>
+        <a-entity position="-0.146 12.435 -1.398" rotation="0 90.01166961505233 90.01166961505233"
+                  scale="7.269 0.559 0.338" geometry="depth:2.83;height:12.99" id="BliftCeil-2"
+                  material="src:images/elevator.jpg"></a-entity>
+
+
+
+
+
+    </a-entity>
+
 
 </a-scene>
 

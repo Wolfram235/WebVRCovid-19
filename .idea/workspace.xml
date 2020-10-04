@@ -1,7 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0e954b7e-9946-4a03-a70c-54d5cf9e33c6" name="Default Changelist" comment="" />
+    <list default="true" id="0e954b7e-9946-4a03-a70c-54d5cf9e33c6" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/audio/bell.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/audio/oc.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/Sd.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/elevator.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Handsanitizer/handsanitizer.glb" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Handsanitizer/handsanitizer.glb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handsan.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/scene.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scene.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scene2.html" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -24,16 +37,21 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/audio" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Benjamin\Downloads\WebVRCovid-19\WebVRCovid-19\audio" />
+      <recent name="C:\Users\Benjamin\Downloads\WebVRCovid-19\WebVRCovid-19" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Benjamin\Downloads\WebVRCovid-19\WebVRCovid-19\images" />
-      <recent name="C:\Users\Benjamin\Downloads\WebVRCovid-19\WebVRCovid-19\js" />
       <recent name="C:\Users\Benjamin\Downloads\WebVRCovid-19\WebVRCovid-19" />
+      <recent name="C:\Users\Benjamin\Downloads\WebVRCovid-19\WebVRCovid-19\js" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -55,18 +73,38 @@
       <workItem from="1601353411471" duration="588000" />
       <workItem from="1601386864846" duration="13575000" />
       <workItem from="1601434991396" duration="12468000" />
-      <workItem from="1601483818765" duration="17112000" />
+      <workItem from="1601483818765" duration="23108000" />
+      <workItem from="1601604753361" duration="18930000" />
+      <workItem from="1601744508717" duration="4034000" />
+      <workItem from="1601751100288" duration="20933000" />
+      <workItem from="1601777269251" duration="619000" />
     </task>
+    <task id="LOCAL-00001" summary="1st">
+      <created>1601506839623</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1601506839623</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="1st" />
+    <option name="LAST_COMMIT_MESSAGE" value="1st" />
   </component>
   <component name="WindowStateProjectService">
     <state x="513" y="214" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1600903920546">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="513" y="214" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824/270.-768.1366.768@0.0.1536.824" timestamp="1600903920546" />
+    <state x="370" y="0" key="CommitChangelistDialog2" timestamp="1601506839010">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="370" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1601506839010" />
     <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1601502135932">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -79,6 +117,18 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="511" y="117" key="Github.UntrackedFilesDialog/0.0.1536.824@0.0.1536.824" timestamp="1601505501351" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1601506929302">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1601506929302" />
+    <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1601506901185">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1601506901185" />
+    <state x="425" y="187" key="run.anything.popup" timestamp="1601773912223">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="425" y="187" key="run.anything.popup/0.0.1536.824/-1366.188.1366.768@0.0.1536.824" timestamp="1601773912223" />
     <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1601502059528">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
