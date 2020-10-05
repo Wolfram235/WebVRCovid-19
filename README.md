@@ -4,16 +4,18 @@
 ## Demo Link
 [Demo Link](https://wolfram235.github.io/WebVRCovid-19/)
 
+### Initial Design
+![Design](/images/init.png)
 ## Interactions and Animations
 ### Turn On/Off Light  
 Clicking while looking at the button turns off the light 
-![Alt Text](/images/ss2.jpg)
+![Light](/images/ss2.jpg)
 ### Lift
 Click the lift button to open it,enter the lift and click the Covid button to enter covid mode.
-![Alt Text](/images/ss3.jpg)
+![Lift](/images/ss3.jpg)
 ### Robot cleaning table in Covid Mode
 Clicking on the first computer will activate the robot cleaning animation, here the robot walks to the table and then performs cleaning action
-![Alt Text](/images/ss1.jpg)
+![pc](/images/ss1.jpg)
 
 ## Sources
 
