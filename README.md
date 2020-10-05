@@ -1,12 +1,12 @@
 #  CS-5311 Project 1 
 ## Demo Video
-[Demo Pages](https://youtu.be/yHJ-dgIZ7tc).
+[Demo Video](https://youtu.be/yHJ-dgIZ7tc).
 ## Demo Link
 [Demo Link](https://wolfram235.github.io/WebVRCovid-19/)
 
 ## Interactions and Animations
-### Turn off/On Light in the library 
-Clicking while looking at the button turns off the light in the library 
+### Turn On/Off Light  
+Clicking while looking at the button turns off the light 
 ![Alt Text](/images/ss2.jpg)
 ### Lift
 Click the lift button to open it,enter the lift and click the Covid button to enter covid mode.
@@ -24,13 +24,13 @@ Clicking on the first computer will activate the robot cleaning animation, here 
 4.  cafeteria table and chair with/without covid
 5.  desktop
 6.  destop table
-7.  desktop chair
+7.  [desktop chair](https://www.cgtrader.com/free-3d-models/furniture/chair/leather-office-chair-710d0a24-8883-451e-9d4d-d19423f2930d)
 8.  sofa
 9.  library shelves
 10. Ceiling lights
-11. Food counter - front desk , fridge ,knives
+11. [Food counter](https://www.turbosquid.com/3d-models/3d-pizzeria-1516180)
 12. Robot
-13. Sanitizer
+13. [Sanitizer](https://poly.google.com/view/8vVKgLRyRYe)
 14. Door
 15. Lift
 
